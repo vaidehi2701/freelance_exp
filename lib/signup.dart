@@ -103,7 +103,7 @@ class _sign_upState extends State<sign_up> {
         pancardText = !pancardText;
         Navigator.of(context).pop();
       });
-      toast;
+
     }
   }
   ChooseCamera()async{
@@ -117,7 +117,7 @@ class _sign_upState extends State<sign_up> {
         pancardText = !pancardText;
         Navigator.of(context).pop();
       });
-      toast;
+
     }
   }
 

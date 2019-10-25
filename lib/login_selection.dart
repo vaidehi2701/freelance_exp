@@ -1,13 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:freelance_exp/admin_login.dart';
 import 'package:freelance_exp/login.dart';
-
+import 'dart:math';
 class LoginSelection extends StatefulWidget {
   @override
   _LoginSelectionState createState() => _LoginSelectionState();
 }
 
-class _LoginSelectionState extends State<LoginSelection> {
+class _LoginSelectionState extends State<LoginSelection> with SingleTickerProviderStateMixin {
+
+  AnimationController animationController;
+  Animation<double> animation;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 3),
+    )..addListener(() => setState(() {}));
+    animation = CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeInOut,
+    );
+
+    animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   final  type ="name";
 
@@ -26,18 +50,21 @@ class _LoginSelectionState extends State<LoginSelection> {
               ),
             ),
 
-           Padding(
-             padding: const EdgeInsets.only(top: 210,right: 150,left: 150),
-             child: Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    image:DecorationImage(
-                        image: AssetImage('images/logo.jpg'),
+           ScaleTransition(
+             scale: animation,
+             child: Padding(
+               padding: const EdgeInsets.only(top: 180,right: 130,left: 130),
+               child: Container(
+                    height: 190,
+                    width: 190,
+                    decoration: BoxDecoration(
+                      image:DecorationImage(
+                          image: AssetImage('images/logo.jpg'),
 
+                      ),
                     ),
                   ),
-                ),
+             ),
            ),
 
 
