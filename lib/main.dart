@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:freelance_exp/add_work_experience.dart';
 import 'package:freelance_exp/home.dart';
 import 'package:freelance_exp/login.dart';
 import 'package:freelance_exp/signup.dart';
@@ -13,12 +14,13 @@ void main() => runApp(MaterialApp(
 
   initialRoute: '/',
   routes: {
-    '/' :(context) => LoginSelection(),
+    '/' :(context) => HomePage(),
     '/login' :(context) => Login(),
     '/verifyotp' :(context) => VerifyOtp(),
     '/adminLogin' :(context) => AdminLogin(),
     '/SignUp':(context) => sign_up(),
-    '/Home':(context) => Home(),
+    '/Home':(context) => HomePage(),
+    '/addWorkExperience':(context) => AddWorkExperience(),
 
 
   },

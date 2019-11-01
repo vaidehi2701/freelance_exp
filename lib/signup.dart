@@ -30,11 +30,7 @@ class _sign_upState extends State<sign_up> {
   String tempAddress;
   String adharCrad;
   String panCard;
-
   String bday;
-
-
-
 
 
   DateTime date= DateTime.now();
