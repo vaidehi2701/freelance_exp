@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
+import 'package:flutter/material.dart' as prefix0;
+import 'dart:async';
+import 'package:intl/intl.dart';
+
 
 class sign_up extends StatefulWidget {
   @override
@@ -12,6 +14,7 @@ class sign_up extends StatefulWidget {
 class _sign_upState extends State<sign_up> {
 
   final nameValidation = new TextEditingController();
+  final birthdateValidation = new TextEditingController();
   final mobileValidation = new TextEditingController();
   final secondMobileValidation = new TextEditingController();
   final emailValidation = new TextEditingController();
@@ -21,14 +24,16 @@ class _sign_upState extends State<sign_up> {
   final adharCardValidation = new TextEditingController();
   final panCardValidation = new TextEditingController();
 
+
   String name;
+  String birthdate;
   String mobile;
   String secondMobile;
   String email;
   String secondEmail;
   String address;
   String tempAddress;
-  String adharCrad;
+  String adharCard;
   String panCard;
   String bday;
 
@@ -36,21 +41,40 @@ class _sign_upState extends State<sign_up> {
   DateTime date= DateTime.now();
   TimeOfDay time= TimeOfDay.now();
 
-  File image;
-  File image1;
+  File adharCardImage;
+  File panCardImge;
   final Status = 'Done';
 
 
 
 
-  Future _selectDate() async {
-    DateTime picked = await showDatePicker(
+  Future ChooseEndDate(BuildContext context, String initialDateString) async {
+    var now = new DateTime.now();
+    var initialDate = convertToDate(initialDateString) ?? now;
+
+    initialDate = (initialDate.year >= 1900 && initialDate.isBefore(now) ? initialDate : now);
+
+    var result = await showDatePicker(
         context: context,
-        initialDate: new DateTime.now(),
-        firstDate: new DateTime(2016),
-        lastDate: new DateTime(2020)
-    );
-    if(picked != null) setState(() => bday = picked.toString());
+        initialDate: initialDate,
+        firstDate: new DateTime(1900),
+        lastDate: new DateTime.now());
+
+    if (result == null) return;
+
+    setState(() {
+      birthdateValidation.text = new DateFormat.yMd().format(result);
+    });
+  }
+
+  DateTime convertToDate(String input) {
+    try
+    {
+      var d = new DateFormat.yMd().parseStrict(input);
+      return d;
+    } catch (e) {
+      return null;
+    }
   }
 
 
@@ -71,32 +95,12 @@ class _sign_upState extends State<sign_up> {
       return null;
   }
 
-  final toast = Fluttertoast.showToast(
-      msg: "Hurray !!!! Image Is Selected",
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-      timeInSecForIos: 1,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      fontSize: 16.0
-  );
-
-
-  bool adharcardText = false;
-  bool pancardText = false;
-
-
-
-
   ChooseGallery()async{
-
     File img =await ImagePicker.pickImage(source: ImageSource.gallery);
     if(img != null){
       print(img.path);
       setState(() {
-        image1=img;
-        adharcardText = !adharcardText;
-        pancardText = !pancardText;
+        panCardImge=img;
         Navigator.of(context).pop();
       });
 
@@ -106,11 +110,8 @@ class _sign_upState extends State<sign_up> {
     File img =await ImagePicker.pickImage(source: ImageSource.camera);
     if(img != null){
       print(img.path);
-
       setState(() {
-        image=img;
-        adharcardText = !adharcardText;
-        pancardText = !pancardText;
+        panCardImge=img;
         Navigator.of(context).pop();
       });
 
@@ -243,7 +244,7 @@ class _sign_upState extends State<sign_up> {
                       Row(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(left: 10,top: 40),
+                            padding: const EdgeInsets.only(left: 10,top: 30),
                             child: Text('SIGN UP ',
                               style: TextStyle(
                                   fontSize: 25,
@@ -254,10 +255,10 @@ class _sign_upState extends State<sign_up> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 85),
+                      SizedBox(height: 55),
                       Container(
                         width: double.infinity,
-                        height: 770,
+                        height: 1070,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -291,6 +292,26 @@ class _sign_upState extends State<sign_up> {
                                       // validator : validateEmail,
                                       onSaved: (val) => name=val,
                                     ),
+                                    SizedBox(height: 10),
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                          child: new TextFormField(
+                                            decoration: new InputDecoration(
+                                              border: OutlineInputBorder(),
+                                              hintText: 'Enter BirthDate',
+                                              labelText: 'BirthDate',
+                                            ),
+                                            controller: birthdateValidation,
+                                            keyboardType: TextInputType.datetime,
+                                          )),
+                                      IconButton(
+                                          icon: new Icon(Icons.calendar_today,size: 25,textDirection: prefix0.TextDirection.ltr,),
+                                          tooltip: 'Choose date',
+                                          onPressed: (() {
+                                            ChooseEndDate(context, birthdateValidation.text);
+                                          }),
+                                      ),
+                                    ]),
                                     SizedBox(height: 10),
                                     TextFormField(
                                       textInputAction: TextInputAction.next,
@@ -373,9 +394,8 @@ class _sign_upState extends State<sign_up> {
                                           labelText: 'Adhar Card Number'
                                       ),
                                       validator : validateMobile,
-                                      onSaved: (val) => adharCrad=val,
+                                      onSaved: (val) => adharCard=val,
                                     ),
-
                                     Row(
                                       children: <Widget>[
                                         SizedBox(width: 5),
@@ -387,17 +407,22 @@ class _sign_upState extends State<sign_up> {
                                         },
                                           child: Text('Upload'),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 15),
-                                          child: adharcardText ?
-                                          Text('Done !!' , style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.green,
-                                            fontWeight: FontWeight.bold
-                                          ),)
-                                              : SizedBox(),
-                                        ),
                                       ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            boxShadow: [ BoxShadow(
+                                              color: Colors.white,
+                                              blurRadius: 2.0,
+                                            ),]
+                                        ),
+                                        width: 350,
+                                        height: 100,
+                                        child: adharCardImage == null ? Text('no image') : Image.file(adharCardImage),
+                                      ),
                                     ),
                                     SizedBox(height: 10),
                                     TextFormField(
@@ -418,22 +443,27 @@ class _sign_upState extends State<sign_up> {
                                         Text("Upload PAN Card:"),
                                         SizedBox(width: 15),
                                         RaisedButton(
-                                          onPressed: () =>
-                                              _displayDialog(context),
-
+                                          onPressed: () {
+                                            showAlertDialog(context);
+                                          },
                                           child: Text('Upload'),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 15),
-                                          child: pancardText ?
-                                          Text('Done !!' , style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.green,
-                                              fontWeight: FontWeight.bold
-                                          ),)
-                                              : SizedBox(),
-                                        ),
                                       ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            boxShadow: [ BoxShadow(
+                                              color: Colors.white,
+                                              blurRadius: 2.0,
+                                            ),]
+                                        ),
+                                        width: 350,
+                                        height: 100,
+                                        child: panCardImge == null ? Text('no image') : Image.file(panCardImge),
+                                      ),
                                     ),
 
                                     SizedBox(height: 10),

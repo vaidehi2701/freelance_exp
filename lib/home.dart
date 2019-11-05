@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:freelance_exp/add_work_experience.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -34,6 +35,8 @@ class _HomePageState extends State<HomePage> {
 
   GlobalKey bottomNavigationKey = GlobalKey();
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,8 +49,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: FancyBottomNavigation(
         tabs: [
           TabData(
-              iconData: Icons.home,
-              title: "Home",
+              iconData: Icons.person,
+              title: "User Info",
               onclick: () {
 //                final FancyBottomNavigationState fState =
 //                    bottomNavigationKey.currentState;
@@ -91,83 +94,163 @@ class _HomePageState extends State<HomePage> {
       case 0:
         return Scaffold(
           appBar: AppBar(
-            title: Text("Home"),
+            title: Text("User Info"),
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(13.0),
-            child: Card(
-              child: Container(
-                height: 110,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(0, 10),
-                        blurRadius: 10,
-                      ),
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(0, -8),
-                        blurRadius: 10,
-                      ),
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Text("Job Title : " , style: TextStyle(
-                              fontSize: 16 , fontWeight: FontWeight.bold
-                          ),),
-                          // Text("${widget.company}"),
-                        ],
-                      ),
-
-                      SizedBox(height: 8),
-                      Row(
-                        children: <Widget>[
-                          Text("Client : " , style: TextStyle(
-                              fontSize: 16 , fontWeight: FontWeight.bold
-                          ),),
-                          //Text("${widget.position}"),
-                        ],
-                      ),
-                      SizedBox(height: 8),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Text("Start Date : " , style: TextStyle(
-                                  fontSize: 16 , fontWeight: FontWeight.bold
-                              ),),
-                              //Text("${widget.start}"),
-                            ],
-                          ),
-
-                          SizedBox(height: 8),
-                          Row(
-                            children: <Widget>[
-                              Text("End Date : " , style: TextStyle(
-                                  fontSize: 16 , fontWeight: FontWeight.bold
-                              ),),
-                              //Text("${widget.end}"),
-                            ],
-                          ),
+                          Text('Skills',style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold
+                          ),),
+                          FlatButton(
+                            child: Icon(Icons.add,color: Colors.black),
+                            onPressed: (){
+                              Navigator.pushNamed(context, '/addSkill');
+                            },
+                          )
                         ],
                       ),
-                      SizedBox(height: 8),
+                      Divider(height: 1,color: Colors.black),
+                      Row(
+                        children: <Widget>[
+                          Chip(
+                            label: Text('first'),
+                          ),
+                          SizedBox(width: 10),
+                          Chip(
+                            label: Text('first'),
+                          ),
+                          SizedBox(width: 10),
+                          Chip(
+                            label: Text('first'),
+                          )
+                        ],
+                      ),
                     ],
                   ),
+            ),
+
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                   Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text('Work Experience',style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          ),),
+                          FlatButton(
+                            child: Icon(Icons.add,color: Colors.black),
+                            onPressed: (){
+                              Navigator.pushNamed(context,'/addWorkExperience');
+                            },
+                          )
+                        ],
+                      ),
+                    Divider(height: 1,color: Colors.black),
+                     Padding(
+                       padding: const EdgeInsets.only(top: 10),
+                       child: Card(
+                          child: Container(
+                            height: 110,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(0, 10),
+                                    blurRadius: 10,
+                                  ),
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(0, -8),
+                                    blurRadius: 10,
+                                  ),
+                                ]),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text("Job Title : " , style: TextStyle(
+                                          fontSize: 16 , fontWeight: FontWeight.w500
+                                      ),),
+                                      // Text("${widget.company}"),
+                                       PopupMenuButton(
+                                          child: Icon(Icons.menu),
+                                          itemBuilder: (context) => [
+                                            PopupMenuItem(
+                                              child: GestureDetector(
+                                                  onTap:(){Navigator.pushNamed(context,'/addWorkExperience');},
+                                                  child: Text("Edit")),
+                                            ),
+                                            PopupMenuItem(
+                                              child: Text("Delete"),
+                                            ),
+                                          ],
+                                        ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 8),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Row(
+                                        children: <Widget>[
+                                          Text("Start Date : " , style: TextStyle(
+                                              fontSize: 16 , fontWeight: FontWeight.w500
+                                          ),),
+                                          //Text("${widget.start}"),
+                                        ],
+                                      ),
+
+                                      SizedBox(height: 8),
+                                      Row(
+                                        children: <Widget>[
+                                          Text("End Date : " , style: TextStyle(
+                                              fontSize: 16 , fontWeight: FontWeight.w500
+                                          ),),
+                                          //Text("${widget.end}"),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 8),
+                                  Row(
+                                    children: <Widget>[
+                                      Text("Company Name : " , style: TextStyle(
+                                          fontSize: 16 , fontWeight: FontWeight.w500
+                                      ),),
+                                      //Text("${widget.position}"),
+                                    ],
+                                  ),
+                                  SizedBox(height: 8),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                     ),
+                  ],
                 ),
               ),
-            ),
+
+            ],
           ),
         );
       case 1:
