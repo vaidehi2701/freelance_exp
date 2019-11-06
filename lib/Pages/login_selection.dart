@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:freelance_exp/admin_login.dart';
-import 'package:freelance_exp/login.dart';
+import 'package:freelance_exp/Pages/admin_login.dart';
+import 'package:freelance_exp/Pages/login.dart';
 import 'dart:math';
 class LoginSelection extends StatefulWidget {
   @override

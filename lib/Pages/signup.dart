@@ -159,7 +159,6 @@ class _sign_upState extends State<sign_up> {
 
       ],
     );
-
     // show the dialog
     showDialog(
       context: context,
