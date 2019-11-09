@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:freelance_exp/Pages/add_work_experience.dart';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
-import 'package:flutter/material.dart' as prefix0;
-import 'dart:async';
-import 'package:intl/intl.dart';
+import 'package:freelance_exp/Pages/contact_us.dart';
+import 'package:freelance_exp/Widget/chat_screen.dart';
+import 'package:freelance_exp/Widget/home_job_list.dart';
 import 'package:freelance_exp/Widget/user_info_layout.dart';
+import 'package:freelance_exp/Widget/your_job.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -53,8 +51,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: FancyBottomNavigation(
         tabs: [
           TabData(
-              iconData: Icons.person,
-              title: "User Info",
+              iconData: Icons.home,
+              title: "Home",
               onclick: () {
               }),
           TabData(
@@ -66,9 +64,10 @@ class _HomePageState extends State<HomePage> {
               title: "Chat"
           ),
           TabData(
-            iconData: Icons.notifications,
-            title: "Notification",
+            iconData: Icons.person,
+            title: "User Info",
           ),
+
         ],
         initialSelection: 0,
         key: bottomNavigationKey,
@@ -86,26 +85,19 @@ class _HomePageState extends State<HomePage> {
     switch (page) {
       case 0:
         return Scaffold(
-          body: UserInfo(),
+            body : HomeJobList(),
         );
       case 1:
         return Scaffold(
-          appBar: AppBar(
-            title: Text("Job"),
-          ),
+          body: YourJob(),
         );
       case 2:
         return Scaffold(
-          appBar: AppBar(
-            title: Text("Chat"),
-          ),
+          body: Chat(),
         );
       default:
         return Scaffold(
-          appBar: AppBar(
-            title: Text("Notification"),
-          ),
-
+          body: UserInfo(),
         );
     }
   }

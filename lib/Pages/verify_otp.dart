@@ -164,20 +164,18 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                   height: 50,
                   child: FlatButton(
                     onPressed: () {
-                      // conditions for validating
-                      if (currentText.length != 4 || currentText != "2561") {
-                        setState(() {
-                          hasError = true;
-                        });
-                      } else {
-                        setState(() {
-                          hasError = false;
-                          scaffoldKey.currentState.showSnackBar(SnackBar(
-                            content: Text("Aye!!"),
-                            duration: Duration(seconds: 2),
-                          ));
-                        });
-                      }
+                      Navigator.pushNamed(context, '/Home');
+//                      // conditions for validating
+//                      if (currentText.length != 4 || currentText != "2561") {
+//                        setState(() {
+//                          hasError = true;
+//                        });
+//                      } else {
+//                        setState(() {
+//                          Navigator.pushNamed(context, '/Home');
+//                          hasError = false;
+//                        });
+//                      }
                     },
                     child: Center(
                         child: Text(
