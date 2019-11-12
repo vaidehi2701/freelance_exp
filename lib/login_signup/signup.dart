@@ -98,6 +98,7 @@ class _sign_upState extends State<sign_up> {
       print(img.path);
       setState(() {
         panCardImge=img;
+        adharCardImage=img;
         Navigator.of(context).pop();
       });
 
@@ -109,6 +110,7 @@ class _sign_upState extends State<sign_up> {
       print(img.path);
       setState(() {
         panCardImge=img;
+        adharCardImage=img;
         Navigator.of(context).pop();
       });
 
@@ -152,8 +154,6 @@ class _sign_upState extends State<sign_up> {
             optionTwo,
           ],
         ),
-
-
       ],
     );
     // show the dialog
@@ -383,7 +383,6 @@ class _sign_upState extends State<sign_up> {
           height: 45,
           decoration: BoxDecoration(
               gradient: LinearGradient(
-
                 colors: [
                   Color.fromARGB(255, 148, 231, 225),
                   Color.fromARGB(255, 62, 182, 226)
@@ -453,7 +452,6 @@ class _sign_upState extends State<sign_up> {
                       SizedBox(height: 55),
                       Container(
                         width: double.infinity,
-                        height: 1070,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -470,6 +468,7 @@ class _sign_upState extends State<sign_up> {
                               ),
                             ]),
                         child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Form(
                               child: Padding(
@@ -519,16 +518,22 @@ class _sign_upState extends State<sign_up> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Container(
+                                        width: 300,
+                                        height: 150,
                                         decoration: BoxDecoration(
+                                           image: DecorationImage(
+                                             fit: BoxFit.fill,
+                                             image: adharCardImage == null ? AssetImage('images/noprofile.jpg') : FileImage(adharCardImage),
+                                           ),
                                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            boxShadow: [ BoxShadow(
+                                            boxShadow: [
+                                              BoxShadow(
                                               color: Colors.white,
                                               blurRadius: 2.0,
                                             ),]
                                         ),
-                                        width: 350,
-                                        height: 100,
-                                        child: adharCardImage == null ? Text('no image') : Image.file(adharCardImage),
+
+
                                       ),
                                     ),
 
@@ -551,16 +556,20 @@ class _sign_upState extends State<sign_up> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Container(
+                                        width: 300,
+                                        height: 150,
                                         decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: panCardImge == null  ? AssetImage('images/noprofile.jpg') : FileImage(panCardImge),
+                                            ),
                                             borderRadius: BorderRadius.all(Radius.circular(10)),
                                             boxShadow: [ BoxShadow(
                                               color: Colors.white,
                                               blurRadius: 2.0,
                                             ),]
                                         ),
-                                        width: 350,
-                                        height: 100,
-                                        child: panCardImge == null ? Text('no image') : Image.file(panCardImge),
+
                                       ),
                                     ),
                                     SizedBox(height: 10),

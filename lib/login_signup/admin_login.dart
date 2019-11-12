@@ -163,7 +163,10 @@ class _AdminLoginState extends State<AdminLogin> {
                           padding: const EdgeInsets.only(top: 10),
                           child: Container(
                             child: RaisedButton(
-                              onPressed: () {submit();},
+                              onPressed: () {
+                                submit();
+                                Navigator.pushNamed(context, '/adminHome');
+                                },
                               padding: const EdgeInsets.all(0.0),
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                               //color: Colors.cyan[100],

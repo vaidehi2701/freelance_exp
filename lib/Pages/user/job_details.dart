@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class JobDetail extends StatefulWidget {
+  final String type;
+
+  JobDetail(
+      {Key key,
+        this.type,
+      }
+      ) : super (key : key);
+
   @override
   _JobDetailState createState() => _JobDetailState();
 }
@@ -154,7 +162,7 @@ class _JobDetailState extends State<JobDetail> {
                   SizedBox(height: 10,),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.monetization_on),
+                      Icon(Icons.attach_money),
                       SizedBox(width: 10),
                       Text('Regular Working Hour Day Rate',
                         style: TextStyle(
@@ -164,7 +172,7 @@ class _JobDetailState extends State<JobDetail> {
                   SizedBox(height: 10,),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.monetization_on),
+                      Icon(Icons.attach_money),
                       SizedBox(width: 10),
                       Text('OverTime Working Hour Rate Per Hour',
                         overflow: TextOverflow.ellipsis,

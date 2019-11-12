@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:freelance_exp/Pages/contact_us.dart';
-import 'package:freelance_exp/Widget/chat_screen.dart';
-import 'package:freelance_exp/Widget/home_job_list.dart';
-import 'package:freelance_exp/Widget/user_info_layout.dart';
-import 'package:freelance_exp/Widget/your_job.dart';
+import 'package:freelance_exp/Pages/user/chat_screen.dart';
+import 'package:freelance_exp/login_signup/home_job_list.dart';
+import 'package:freelance_exp/Pages/user/user_info_layout.dart';
+import 'package:freelance_exp/login_signup/your_job.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -49,6 +48,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: FancyBottomNavigation(
+        circleColor: Colors.red,
+        activeIconColor: Colors.white,
+        textColor: Colors.black,
+        inactiveIconColor: Colors.black,
         tabs: [
           TabData(
               iconData: Icons.home,
