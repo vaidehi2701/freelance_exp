@@ -54,9 +54,7 @@ class _ContactUsState extends State<ContactUs> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: <Widget>[
-                      Card(
+                  child: Card(
                         color: Colors.white,
                         child: Column(
                           children: <Widget>[
@@ -134,8 +132,7 @@ class _ContactUsState extends State<ContactUs> {
                           ],
                         ),
                       ),
-                    ],
-                  ),
+
                 ),
               ],
             )
