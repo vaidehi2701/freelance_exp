@@ -6,6 +6,20 @@ class HomeJobList extends StatefulWidget {
 }
 
 class _HomeJobListState extends State<HomeJobList> {
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
       return Stack(
@@ -32,7 +46,7 @@ class _HomeJobListState extends State<HomeJobList> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Home",style: TextStyle(color: Colors.black),),
+                Text("Home",style:ToolbarTitle),
                 GestureDetector(
                     onTap: (){
                       Navigator.pushNamed(context, '/notification');
@@ -47,7 +61,7 @@ class _HomeJobListState extends State<HomeJobList> {
               padding: const EdgeInsets.all(10),
               child: Card(
                 child: Container(
-                  height: 155,
+                  height: 185,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -59,31 +73,25 @@ class _HomeJobListState extends State<HomeJobList> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Row(
-                          mainAxisAlignment: MainAxisAlignment
-                              .spaceBetween,
-                          children: <Widget>[
-                            Text("Company Name : ", style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500
-                            ),),
-                            // Text("${widget.company}"),
-                          ],
-                        ),
+                            mainAxisAlignment: MainAxisAlignment
+                                .spaceBetween,
+                            children: <Widget>[
+                              Expanded(child: Text("Company Name : ", style:Title )),
+                              // Text("${widget.company}"),
+                            ],
+                          ),
+                        
                         SizedBox(height: 10),
                         Row(
                           children: <Widget>[
-                            Text("Job Title : ", style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500
-                            ),),
+                            Expanded(child: Text("Job Title : ", style: Title)),
                             //Text("${widget.start}"),
                           ],
                         ),
                         SizedBox(height:10),
                         Row(
                           children: <Widget>[
-                            Text("Salary : ", style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500
-                            ),),
+                            Expanded(child: Text("Salary : ", style: Title)),
                             //Text("${widget.position}"),
                           ],
                         ),

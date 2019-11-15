@@ -15,7 +15,19 @@ class _AdminNotiListState extends State<AdminNotiList> {
   final List<String> details = <String>['job1 Details is here ',
     'Details U Require', 'What U ELSE wANT','Bio data Of Job'];
   final List<String> date = <String>['25-10-19', '15-10-19', '29-12-19','25-10-19'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.7,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
 
   
 
@@ -28,7 +40,7 @@ class _AdminNotiListState extends State<AdminNotiList> {
           width: double.infinity,
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -45,9 +57,7 @@ class _AdminNotiListState extends State<AdminNotiList> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text('Notification',style: TextStyle(
-                    color: Colors.black
-                ),),
+                Text('Notification',style: ToolbarTitle),
                 GestureDetector(
                     onTap: (){
                       Navigator.pushNamed(context, '/addNotification');
@@ -79,28 +89,25 @@ class _AdminNotiListState extends State<AdminNotiList> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text(' ${details[index]}'),
+                                          Text(' ${details[index]}',style: Title),
                                           SizedBox(height: 10),
-                                          Text('Last Date : ${date[index]}' , style: TextStyle(
-                                              fontWeight: FontWeight.bold
-                                          ),)
+                                          Text('Last Date : ${date[index]}' , style: Title)
                                         ],
                                       ),
                                     ),
                                     actions: <Widget>[
                                       Row(
                                         children: <Widget>[
-//                                            FlatButton(
-//                                              onPressed: (){
-//                                                Navigator.pushNamed(context, '/Home');
-//                                              },
-//                                              child: Text('Apply'),
-//                                            ),
+//
                                           FlatButton(
                                             onPressed: (){
                                               Navigator.of(context).pop();
                                             },
-                                            child: Text('close'),
+                                            child: Text('close',style: TextStyle(
+                                                fontFamily: 'SEGOEUI',
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600
+                                            )),
                                           ),
                                         ],
                                       )
@@ -119,13 +126,13 @@ class _AdminNotiListState extends State<AdminNotiList> {
                                     children: <Widget>[
                                       Text('${titles[index]}' ,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18
-                                        ),),
+                                            fontFamily: 'SEGOEUI',
+                                            fontSize: 17,
+                                            letterSpacing: 0.6,
+                                            fontWeight: FontWeight.w500
+                                        )),
                                       SizedBox(height: 10),
-                                      Text('Last Date : ${date[index]}' , style: TextStyle(
-                                          fontSize: 15
-                                      ),),
+                                      Text('Last Date : ${date[index]}' , style: Title),
                                     ],
                                   ),
                                 ),

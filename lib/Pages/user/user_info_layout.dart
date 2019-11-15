@@ -12,6 +12,26 @@ class UserInfo extends StatefulWidget {
 
 class _UserInfoState extends State<UserInfo> {
 
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
+  TextStyle MainTitle = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 18,
+      letterSpacing: 0.5,
+      fontWeight: FontWeight.w800
+  );
+
 
   TabController _controller;
 
@@ -138,7 +158,7 @@ class _UserInfoState extends State<UserInfo> {
         child: Container(
       padding: EdgeInsets.all(1.0),
       decoration: BoxDecoration(),
-      child: Container(
+          child: Container(
           width: 90.0,
           height: 90.0,
           decoration: BoxDecoration(
@@ -163,7 +183,7 @@ class _UserInfoState extends State<UserInfo> {
           width: double.infinity,
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -185,7 +205,7 @@ class _UserInfoState extends State<UserInfo> {
                   children: <Widget>[
                     Text(
                       "User Info",
-                      style: TextStyle(color: Colors.black),
+                      style: ToolbarTitle,
                     ),
                     Row(
                       children: <Widget>[
@@ -236,10 +256,7 @@ class _UserInfoState extends State<UserInfo> {
                                       padding: const EdgeInsets.only(left: 15),
                                       child: Text(
                                         'UserName',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18,
-                                            letterSpacing: 0.5),
+                                        style: MainTitle
                                       ),
                                     ),
                                     SizedBox(height: 10),
@@ -251,13 +268,15 @@ class _UserInfoState extends State<UserInfo> {
                                         unselectedLabelColor: Colors.red[300],
                                         tabs: [
                                           Tab(
-                                            text: 'Summary',
+                                            child: Text('Summary',style: Title,),
                                           ),
                                           Tab(
-                                            text: 'Avability',
+                                            child: Text('Avability',style: Title,),
+
                                           ),
                                           Tab(
-                                            text: 'Work Experience',
+                                            child: Text(' Experience',style: Title,),
+                                            
                                           ),
                                         ],
                                       ),
@@ -283,9 +302,7 @@ class _UserInfoState extends State<UserInfo> {
                                         children: <Widget>[
                                           Text(
                                             'Personal Info',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
+                                            style: MainTitle
                                           ),
                                           FlatButton(
                                             child: Icon(Icons.edit,
@@ -313,10 +330,7 @@ class _UserInfoState extends State<UserInfo> {
                                               SizedBox(width: 15),
                                               Text(
                                                 'abc@gmail.com',
-                                                style: TextStyle(
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w400),
+                                                style: Title
                                               ),
                                             ],
                                           ),
@@ -331,10 +345,7 @@ class _UserInfoState extends State<UserInfo> {
                                               SizedBox(width: 15),
                                               Text(
                                                 '9974922041',
-                                                style: TextStyle(
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w400),
+                                                style: Title
                                               ),
                                             ],
                                           ),
@@ -347,9 +358,7 @@ class _UserInfoState extends State<UserInfo> {
                                         children: <Widget>[
                                           Text(
                                             'Skills',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
+                                            style:MainTitle
                                           ),
                                           FlatButton(
                                             child: Icon(Icons.add,
@@ -367,15 +376,15 @@ class _UserInfoState extends State<UserInfo> {
                                       Row(
                                         children: <Widget>[
                                           Chip(
-                                            label: Text('first'),
+                                            label: Text('first',style: Title),
                                           ),
                                           SizedBox(width: 10),
                                           Chip(
-                                            label: Text('first'),
+                                            label: Text('first',style: Title),
                                           ),
                                           SizedBox(width: 10),
                                           Chip(
-                                            label: Text('first'),
+                                            label: Text('first',style: Title),
                                           )
                                         ],
                                       ),
@@ -393,9 +402,7 @@ class _UserInfoState extends State<UserInfo> {
                                         children: <Widget>[
                                           Text(
                                             'Select Your Avaiblity',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
+                                            style:MainTitle
                                           ),
                                           FlatButton(
                                             child: Icon(Icons.add,
@@ -418,24 +425,28 @@ class _UserInfoState extends State<UserInfo> {
                                               children: <Widget>[
                                                 Text(
                                                   'Start Date',
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400),
+                                                  style:TextStyle(
+                                                      fontFamily: 'SEGOEUI',
+                                                      fontSize: 17,
+                                                      letterSpacing: 0.5,
+                                                      fontWeight: FontWeight.w600
+                                                  )
                                                 ),
                                                 Text(
                                                   'End Date',
                                                   style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400),
+                                                      fontFamily: 'SEGOEUI',
+                                                      fontSize: 17,
+                                                      letterSpacing: 0.5,
+                                                      fontWeight: FontWeight.w600),
                                                 ),
                                                 Text(
                                                   'Status',
                                                   style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400),
+                                                      fontFamily: 'SEGOEUI',
+                                                      fontSize: 17,
+                                                      letterSpacing: 0.5,
+                                                      fontWeight: FontWeight.w600),
                                                 ),
                                               ],
                                             ),
@@ -446,10 +457,10 @@ class _UserInfoState extends State<UserInfo> {
                                                       .spaceBetween,
                                               children: <Widget>[
                                                 Text(
-                                                    ' ${DateFormat('dd/MM/yyyy').format(startDate).toString()}'),
+                                                    ' ${DateFormat('dd/MM/yyyy').format(startDate).toString()}' ,style: Title),
                                                 Text(
-                                                    ' ${DateFormat('dd/MM/yyyy').format(endDate).toString()}'),
-                                                Text('Avaiable'),
+                                                    ' ${DateFormat('dd/MM/yyyy').format(endDate).toString()}',style: Title),
+                                                Text('Avaiable' , style: Title),
                                               ],
                                             ),
                                           ],
@@ -468,9 +479,7 @@ class _UserInfoState extends State<UserInfo> {
                                         children: <Widget>[
                                           Text(
                                             'Work Experience',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
+                                            style: MainTitle
                                           ),
                                           FlatButton(
                                             child: Icon(Icons.add,
@@ -519,11 +528,7 @@ class _UserInfoState extends State<UserInfo> {
                                                     children: <Widget>[
                                                       Text(
                                                         "Job Title : ",
-                                                        style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
+                                                        style: Title
                                                       ),
                                                       // Text("${widget.company}"),
                                                       PopupMenuButton(
@@ -539,12 +544,24 @@ class _UserInfoState extends State<UserInfo> {
                                                                           context,
                                                                           '/addWorkExperience');
                                                                     },
-                                                                    child: Text(
-                                                                        "Edit")),
+                                                                    child: Row(
+                                                                      children: <Widget>[
+                                                                        Icon(Icons.mode_edit,size: 20,),
+                                                                        SizedBox(width: 10),
+                                                                        Text(
+                                                                            "Edit",style: Title,),
+                                                                      ],
+                                                                    )),
                                                           ),
                                                           PopupMenuItem(
-                                                            child:
-                                                                Text("Delete"),
+                                                              child :Row(
+                                                                children: <Widget>[
+                                                                  Icon(Icons.delete,size: 20,),
+                                                                  SizedBox(width: 10),
+                                                                  Text(
+                                                                    "Delete",style: Title,),
+                                                                ],
+                                                              ),
                                                           ),
                                                         ],
                                                       ),
@@ -559,11 +576,7 @@ class _UserInfoState extends State<UserInfo> {
                                                         children: <Widget>[
                                                           Text(
                                                             "Start Date : ",
-                                                            style: TextStyle(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
+                                                            style: Title
                                                           ),
                                                           //Text("${widget.start}"),
                                                         ],
@@ -573,11 +586,7 @@ class _UserInfoState extends State<UserInfo> {
                                                         children: <Widget>[
                                                           Text(
                                                             "End Date : ",
-                                                            style: TextStyle(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
+                                                            style: Title
                                                           ),
                                                           //Text("${widget.end}"),
                                                         ],
@@ -589,11 +598,7 @@ class _UserInfoState extends State<UserInfo> {
                                                     children: <Widget>[
                                                       Text(
                                                         "Company Name : ",
-                                                        style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
+                                                        style: Title
                                                       ),
                                                       //Text("${widget.position}"),
                                                     ],

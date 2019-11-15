@@ -44,6 +44,13 @@ class _AdminLoginState extends State<AdminLogin> {
       return null;
   }
 
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
 
@@ -78,12 +85,15 @@ class _AdminLoginState extends State<AdminLogin> {
 //                            height : ScreenUtil.getInstance().setHeight(100)),
 
                             Padding(
-                              padding: const EdgeInsets.only(left: 20,top: 50),
+                              padding: const EdgeInsets.only(left: 10,top: 50),
                               child: Text('Admin Login ',
                                 style: TextStyle(
+                                    fontFamily: 'PlayFairDisplay',
                                     fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 1
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing:1.3,
+                                    color: Colors.black
                                 ),
                               ),
                             ),
@@ -121,8 +131,8 @@ class _AdminLoginState extends State<AdminLogin> {
                                         controller: emailValidation,
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(),
-                                            hintText: 'Enter Your Admin-id',
-                                            labelText: 'Admin Id'
+                                            hintText: 'Enter Your Admin-id', hintStyle: Title,
+                                            labelText: 'Admin Id',labelStyle: Title
                                         ),
                                         validator : validateEmail,
                                         onSaved: (val) => email=val,
@@ -137,8 +147,8 @@ class _AdminLoginState extends State<AdminLogin> {
                                         obscureText: true,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
-                                          labelText: 'Password',
-                                          hintText: 'Enter Your Password',
+                                          labelText: 'Password', hintStyle: Title,
+                                          hintText: 'Enter Your Password',labelStyle: Title
                                         ),
                                         validator : validateMobile,
                                         onSaved: (val) => mobile=val,

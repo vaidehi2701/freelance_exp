@@ -6,6 +6,20 @@ class AdminJobList extends StatefulWidget {
 }
 
 class _AdminJobListState extends State<AdminJobList> {
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -15,7 +29,7 @@ class _AdminJobListState extends State<AdminJobList> {
           width: double.infinity,
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/try.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -34,7 +48,7 @@ class _AdminJobListState extends State<AdminJobList> {
               children: <Widget>[
                 Text(
                   "Job List",
-                  style: TextStyle(color: Colors.black),
+                  style: ToolbarTitle
                 ),
                 GestureDetector(
                     onTap: () {
@@ -48,7 +62,7 @@ class _AdminJobListState extends State<AdminJobList> {
             padding: const EdgeInsets.all(10),
             child: Card(
               child: Container(
-                height: 155,
+                height: 175,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -62,10 +76,11 @@ class _AdminJobListState extends State<AdminJobList> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            "Company Name : ",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                          Expanded(
+                            child: Text(
+                              "Company Name : ",
+                              style: Title
+                            ),
                           ),
                           // Text("${widget.company}"),
                         ],
@@ -73,10 +88,11 @@ class _AdminJobListState extends State<AdminJobList> {
                       SizedBox(height: 10),
                       Row(
                         children: <Widget>[
-                          Text(
-                            "Job Title : ",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                          Expanded(
+                            child: Text(
+                              "Job Title : ",
+                              style:Title
+                            ),
                           ),
                           //Text("${widget.start}"),
                         ],
@@ -84,10 +100,11 @@ class _AdminJobListState extends State<AdminJobList> {
                       SizedBox(height: 10),
                       Row(
                         children: <Widget>[
-                          Text(
-                            "Salary : ",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500),
+                          Expanded(
+                            child: Text(
+                              "Salary : ",
+                              style: Title
+                            ),
                           ),
                           //Text("${widget.position}"),
                         ],

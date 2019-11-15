@@ -83,6 +83,19 @@ class _AddAdminPageState extends State<AddAdmin> {
     );
   }
 
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   Widget getProfilePicture({String pictureUrl}) {
     return Container(
         margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -150,73 +163,100 @@ class _AddAdminPageState extends State<AddAdmin> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: AppBar(
-        title: Text('Add Admin'),
-      ),
-        body:  Stack(
-          children: <Widget>[
-            ClipPath(
-              child: Container(
-                  color: Colors.black.withOpacity(0.6)),
-              clipper: getClipper(),
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/back.jpg"),
+              fit: BoxFit.cover,
             ),
+          ),
+        ),
+        Scaffold(
+          appBar: new AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            iconTheme: IconThemeData(
+              color: Colors.black, //change your color here
+            ),
+            title:Text(
+              "Add Admin",
+              style: ToolbarTitle,
+            ),
+          ),
 
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    getProfilePicture(),
-                    SizedBox(height: 10.0),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,left: 35,right: 35),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: ('Admin Id')
-                        ),
+          backgroundColor: Colors.transparent,
+          body:Stack(
+            children: <Widget>[
+              ClipPath(
+                child: Container(
+                    color: Colors.black.withOpacity(0.6)),
+                clipper: getClipper(),
+              ),
+
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  getProfilePicture(),
+                  SizedBox(height: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,left: 35,right: 35),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText:'Admin Id',labelStyle: Title
                       ),
                     ),
-                     SizedBox(height: 10),
-                     Padding(
-                       padding: const EdgeInsets.only(top: 10,left: 35,right: 35),
-                       child: TextFormField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                                labelText: ('Password')
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,left: 35,right: 35),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Password', labelStyle: Title
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 35.0),
+                  Container(
+                      height: 45.0,
+                      width: 145.0,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(10.0),
+                        shadowColor: Colors.red,
+                        color: Colors.red,
+                        elevation: 7.0,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Center(
+                            child: Text(
+                              'Submit',
+                              style: TextStyle(
+                                  fontFamily: 'Helvetica',
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0.7,
+                                  fontSize: 18,
+                                  color: Colors.white),
                             ),
                           ),
-                     ),
+                        ),
+                      )),
 
-                    SizedBox(height: 35.0),
-                    Container(
-                        height: 45.0,
-                        width: 145.0,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(10.0),
-                          shadowColor: Colors.red,
-                          color: Colors.red,
-                          elevation: 7.0,
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Center(
-                              child: Text(
-                                'Submit',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        )),
+                ],
+              )
 
-                  ],
-                )
+            ],
+          ),
+        ),
 
-          ],
-        )
+      ],
     );
   }
 }

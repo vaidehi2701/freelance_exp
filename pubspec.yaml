@@ -59,6 +59,14 @@ flutter:
     - family: PlayfairDisplay
       fonts:
         - asset: fonts/PlayfairDisplay-Regular.ttf
+    - family: Helvetica
+      fonts:
+        - asset: fonts/Helvetica.ttf
+    - family: SEGOEUI
+      fonts:
+        - asset: fonts/SEGOEUI.TTF
+
+
 
   # To add assets to your application, add an assets section, like this:
   assets:

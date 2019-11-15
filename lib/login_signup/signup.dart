@@ -165,35 +165,25 @@ class _sign_upState extends State<sign_up> {
     );
   }
 
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
-    final FocusNode fnName = FocusNode();
-    final FocusNode fnbDay = FocusNode();
-    final FocusNode fnMobile = FocusNode();
-    final FocusNode fnSecondMobile = FocusNode();
-    final FocusNode fnEmail = FocusNode();
-    final FocusNode fnSecondEmail = FocusNode();
-    final FocusNode fnAddress = FocusNode();
-    final FocusNode fnTempAddress = FocusNode();
-    final FocusNode fnAdharCard = FocusNode();
-    final FocusNode fnPanCard = FocusNode();
-    final FocusNode fnAdharCardButton = FocusNode();
-    final FocusNode fnPanCardButton = FocusNode();
+
 
 
     final NameWidget =
     TextFormField(
       textInputAction: TextInputAction.next,
       controller: nameValidation,
-      focusNode: fnName,
-      onFieldSubmitted: (term) {
-        fnName.unfocus();
-        FocusScope.of(context).requestFocus(fnbDay);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Name',
-          labelText: 'Name'
+          hintText: 'Enter Your Name', hintStyle: Title,
+          labelText: 'Name',labelStyle: Title
       ),
       // validator : validateEmail,
       onSaved: (val) => name=val,
@@ -205,15 +195,10 @@ class _sign_upState extends State<sign_up> {
           child: new TextFormField(
             decoration: new InputDecoration(
               border: OutlineInputBorder(),
-              hintText: 'Enter BirthDate',
-              labelText: 'BirthDate',
+              hintText: 'Enter BirthDate', hintStyle: Title,
+              labelText: 'BirthDate',labelStyle: Title
             ),
             controller: birthdateValidation,
-            focusNode: fnbDay,
-            onFieldSubmitted: (term) {
-              fnbDay.unfocus();
-              FocusScope.of(context).requestFocus(fnMobile);
-            },
             keyboardType: TextInputType.datetime,
           )),
       IconButton(
@@ -229,15 +214,10 @@ class _sign_upState extends State<sign_up> {
     TextFormField(
       textInputAction: TextInputAction.next,
       controller: mobileValidation,
-      focusNode: fnMobile,
-      onFieldSubmitted: (term) {
-        fnMobile.unfocus();
-        FocusScope.of(context).requestFocus(fnSecondMobile);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Primary Contact Number',
-          labelText: 'Primary Contact Number'
+          hintText: 'Enter Your Primary Contact Number', hintStyle: Title,
+          labelText: 'Primary Contact Number' ,labelStyle: Title
       ),
       validator : validateMobile,
       onSaved: (val) => mobile=val,
@@ -247,15 +227,10 @@ class _sign_upState extends State<sign_up> {
     TextFormField(
       textInputAction: TextInputAction.next,
       controller: secondMobileValidation,
-      focusNode: fnSecondMobile,
-      onFieldSubmitted: (term) {
-        fnSecondMobile.unfocus();
-        FocusScope.of(context).requestFocus(fnEmail);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Secondary Contact Number',
-          labelText: 'Secondary Contact Number(Optional)'
+          hintText: 'Enter Your Secondary Contact Number', hintStyle: Title,
+          labelText: 'Secondary Contact Number(Optional)', labelStyle: Title
       ),
       onSaved: (val) => secondMobile=val,
     );
@@ -264,15 +239,10 @@ class _sign_upState extends State<sign_up> {
     TextFormField(
       textInputAction: TextInputAction.next,
       controller: emailValidation,
-      focusNode: fnEmail,
-      onFieldSubmitted: (term) {
-        fnEmail.unfocus();
-        FocusScope.of(context).requestFocus(fnSecondEmail);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Primary Email',
-          labelText: 'Primary Email'
+          hintText: 'Enter Your Primary Email', hintStyle: Title,
+          labelText: 'Primary Email',labelStyle: Title
       ),
       validator : validateMobile,
       onSaved: (val) => email=val,
@@ -282,15 +252,10 @@ class _sign_upState extends State<sign_up> {
     TextFormField(
       textInputAction: TextInputAction.next,
       controller: secondEmailValidation,
-      focusNode: fnSecondEmail,
-      onFieldSubmitted: (term) {
-        fnSecondEmail.unfocus();
-        FocusScope.of(context).requestFocus(fnAddress);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Secondary Email',
-          labelText: 'Secondary Email(Optional)'
+          hintText: 'Enter Your Secondary Email', hintStyle: Title,
+          labelText: 'Secondary Email(Optional)', labelStyle: Title
       ),
 
       onSaved: (val) => secondEmail=val,
@@ -299,15 +264,10 @@ class _sign_upState extends State<sign_up> {
     final PermanentAddressWidget= TextFormField(
       textInputAction: TextInputAction.next,
       controller: addressValidation,
-      focusNode: fnAddress,
-      onFieldSubmitted: (term) {
-        fnAddress.unfocus();
-        FocusScope.of(context).requestFocus(fnTempAddress);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Permanent Address',
-          labelText: 'Permanent Address'
+          hintText: 'Enter Your Permanent Address', hintStyle: Title,
+          labelText: 'Permanent Address',labelStyle: Title
       ),
       validator : validateMobile,
       onSaved: (val) => address=val,
@@ -317,15 +277,10 @@ class _sign_upState extends State<sign_up> {
     TextFormField(
       textInputAction: TextInputAction.next,
       controller: tempAddressValidation,
-      focusNode: fnTempAddress,
-      onFieldSubmitted: (term) {
-        fnTempAddress.unfocus();
-        FocusScope.of(context).requestFocus(fnAdharCard);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Temporary Address',
-          labelText: 'Temporary Address'
+          hintText: 'Enter Your Temporary Address',hintStyle: Title,
+          labelText: 'Temporary Address',labelStyle: Title
       ),
       validator : validateMobile,
       onSaved: (val) => tempAddress=val,
@@ -335,15 +290,11 @@ class _sign_upState extends State<sign_up> {
     TextFormField(
       textInputAction: TextInputAction.next,
       controller: adharCardValidation,
-      focusNode: fnAdharCard,
-      onFieldSubmitted: (term) {
-        fnAdharCard.unfocus();
-        FocusScope.of(context).requestFocus(fnAdharCardButton);
-      },
+
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your Adhar Card Number',
-          labelText: 'Adhar Card Number'
+          hintText: 'Enter Your Adhar Card Number', hintStyle: Title,
+          labelText: 'Adhar Card Number',labelStyle: Title
       ),
       validator : validateMobile,
       onSaved: (val) => adharCard=val,
@@ -353,54 +304,38 @@ class _sign_upState extends State<sign_up> {
     TextFormField(
       textInputAction: TextInputAction.done,
       controller: panCardValidation,
-      focusNode: fnPanCard,
-      onFieldSubmitted: (term) {
-        fnPanCard.unfocus();
-        FocusScope.of(context).requestFocus(fnPanCardButton);
-      },
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: 'Enter Your PAN Card Number',
-          labelText: 'PAN Card Number'
+          hintText: 'Enter Your PAN Card Number', hintStyle: Title,
+          labelText: 'PAN Card Number', labelStyle: Title
       ),
       validator : validateMobile,
       onSaved: (val) => panCard=val,
     );
 
     final SignUpButton=
-    Container(
-      child: RaisedButton(
-        focusNode: fnName,
-        onPressed: () {
-          Navigator.pushNamed(context, '/Home');
-        },
-        padding: const EdgeInsets.all(0.0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        //color: Colors.cyan[100],
-        elevation: 20,
-        child:Container(
-          width: 150,
-          height: 45,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 148, 231, 225),
-                  Color.fromARGB(255, 62, 182, 226)
-                ],
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(10.0))
-          ),
-          padding: const EdgeInsets.all(10),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 3),
-            child: Text('Sign Up' ,
-              textAlign: TextAlign.center, style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 15,
-                  color: Colors.white
-              ),),
-          ),
+    Align(
+      alignment: Alignment.bottomRight,
+      child: Container(
+        height: 45,
+        width: 120,
+        decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(10)
         ),
+        child: Center(
+            child: GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, '/Home');
+              },
+              child: Text('SignUp',
+                style: TextStyle(
+                    fontFamily: 'Helvetica',
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.8,
+                    fontSize: 18,
+                    color: Colors.white),),
+            )),
       ),
     );
 
@@ -431,9 +366,12 @@ class _sign_upState extends State<sign_up> {
                         padding: const EdgeInsets.only(left: 10,top: 30),
                         child: Text('SIGN UP ',
                           style: TextStyle(
+                              fontFamily: 'PlayFairDisplay',
                               fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing:1.3,
+                              color: Colors.black
                           ),
                         ),
                       ),
@@ -493,15 +431,20 @@ class _sign_upState extends State<sign_up> {
                                 Row(
                                   children: <Widget>[
                                     SizedBox(width: 5),
-                                    Text("Upload Adhar Card:"),
+                                    Text("Upload Adhar Card:",style: Title,),
                                     SizedBox(width: 15),
 
                                     RaisedButton(
+                                      color: Colors.red[400],
                                       onPressed: (){
                                         showAlertDialog(context);
                                       },
-                                      focusNode: fnAdharCardButton,
-                                      child: Text('Upload'),
+                                      child: Text('Upload',style: TextStyle(
+                                          fontFamily: 'SEGOEUI',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                        color: Colors.white
+                                      ),),
                                     ),
                                   ],
                                 ),
@@ -532,14 +475,20 @@ class _sign_upState extends State<sign_up> {
                                 Row(
                                   children: <Widget>[
                                     SizedBox(width: 5),
-                                    Text("Upload PAN Card:"),
+                                    Text("Upload PAN Card:",style: Title,),
                                     SizedBox(width: 15),
                                     RaisedButton(
+                                      color: Colors.red[400],
                                       onPressed: () {
                                         showAlertDialog(context);
                                       },
-                                      focusNode: fnPanCardButton,
-                                      child: Text('Upload'),
+
+                                      child: Text('Upload',style: TextStyle(
+                                          fontFamily: 'SEGOEUI',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white
+                                      )),
                                     ),
                                   ],
                                 ),
@@ -572,16 +521,8 @@ class _sign_upState extends State<sign_up> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: SignUpButton
-                      ),
-                    ],
-                  ),
-                  Image.asset('images/image_02.png')
+                  SignUpButton,
+                  SizedBox(height: 40),
                 ],
               ),
             ),

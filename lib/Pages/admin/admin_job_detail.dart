@@ -7,6 +7,20 @@ class AdminJobDetail extends StatefulWidget {
 }
 
 class _AdminJobDetailState extends State<AdminJobDetail> {
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -16,7 +30,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
           width: double.infinity,
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -31,7 +45,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
             ),
             title:  Text(
               "Job Details",
-              style: TextStyle(color: Colors.black),
+              style: ToolbarTitle
             ),
           ),
           body:  Padding(
@@ -63,8 +77,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.home),
                           SizedBox(width: 10),
                           Text('Job Title 1',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -73,8 +86,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.home),
                           SizedBox(width: 10),
                           Text('Job Title 2',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -83,14 +95,12 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.date_range),
                           SizedBox(width: 10),
                           Text('Start Date',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                           SizedBox(width: 40),
                           Icon(Icons.date_range),
                           SizedBox(width: 10),
                           Text('End Date',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -99,8 +109,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.date_range),
                           SizedBox(width: 10),
                           Text('Working Days In Week',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -109,8 +118,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.date_range),
                           SizedBox(width: 10),
                           Text('Hour Of Week',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -119,8 +127,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.event_available),
                           SizedBox(width: 10),
                           Text('Sunday Working Avaiblity',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -129,8 +136,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.payment),
                           SizedBox(width: 10),
                           Text('Payment Terms',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -139,8 +145,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.location_city),
                           SizedBox(width: 10),
                           Text('Job Location',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -149,8 +154,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.hotel),
                           SizedBox(width: 10),
                           Text('Accommodation Avaiblity',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -159,8 +163,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.directions_car),
                           SizedBox(width: 10),
                           Text('One Time Trasportation',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -169,8 +172,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.directions_bus),
                           SizedBox(width: 10),
                           Text('Local Transportation',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -179,8 +181,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           Icon(Icons.attach_money),
                           SizedBox(width: 10),
                           Text('Regular Working Hour Day Rate',
-                            style: TextStyle(
-                              fontSize: 17,),),
+                            style: Title),
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -190,9 +191,7 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text('OverTime Working Hour Rate Per Hour',
-                              style: TextStyle(
-                                fontSize: 17,
-                              ),),
+                              style: Title),
                           ),
                         ],
                       ),
@@ -205,7 +204,10 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                               Navigator.pushNamed(context, '/appliedUserList');
                             },
                             child: Text('Applied User',style: TextStyle(
+                                fontFamily: 'SEGOEUI',
                                 fontSize: 16,
+                                letterSpacing: 0.7,
+                                fontWeight: FontWeight.w600,
                                 color: Colors.white
                             ),),
                           )
@@ -219,7 +221,10 @@ class _AdminJobDetailState extends State<AdminJobDetail> {
                                 Navigator.pushNamed(context, '/adminJobUser');
                               },
                               child: Text('Inbox',style: TextStyle(
+                                  fontFamily: 'SEGOEUI',
                                   fontSize: 16,
+                                  letterSpacing: 0.7,
+                                  fontWeight: FontWeight.w600,
                                   color: Colors.white),
                               )
                           )

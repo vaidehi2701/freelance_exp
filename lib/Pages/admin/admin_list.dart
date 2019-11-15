@@ -7,6 +7,20 @@ class AdminList extends StatefulWidget {
 
 
 class _AdminListState extends State<AdminList> {
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -16,7 +30,7 @@ class _AdminListState extends State<AdminList> {
           width: double.infinity,
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -34,9 +48,7 @@ class _AdminListState extends State<AdminList> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text('Admin List',
-                      style:TextStyle(
-                          color:Colors.black
-                      )),
+                      style:ToolbarTitle),
                   GestureDetector(
                       onTap: (){
                         Navigator.pushNamed(context,'/addAdmin');
@@ -125,10 +137,10 @@ class AdminInfoWidget extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Text(admin.title,style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 0.5
+                                    fontFamily: 'SEGOEUI',
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500
                                 ),),
                               ),
                             ),
@@ -140,11 +152,35 @@ class AdminInfoWidget extends StatelessWidget {
                                     onTap: (){
                                       Navigator.pushNamed(context, '/addAdmin');
                                     },
-                                      child: Text('Edit')),
+                                    child :Row(
+                                      children: <Widget>[
+                                        Icon(Icons.mode_edit,size: 20,),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          "Edit",style:TextStyle(
+                                            fontFamily: 'SEGOEUI',
+                                            fontSize: 16,
+
+                                            fontWeight: FontWeight.w500
+                                        ),),
+                                      ],
+                                    ),)
                                 ),
                                 PopupMenuItem(
                                   child: GestureDetector(
-                                      child: Text('Delete')),
+                                    child :Row(
+                                      children: <Widget>[
+                                        Icon(Icons.delete,size: 20,),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          "Delete",style:TextStyle(
+                                            fontFamily: 'SEGOEUI',
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500
+                                        ),),
+                                      ],
+                                    ),
+                                  ),
                                 )
                               ],
                             )

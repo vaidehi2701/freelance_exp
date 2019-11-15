@@ -13,6 +13,22 @@ class _LoginSelectionState extends State<LoginSelection>
   final type = "name";
   int value;
 
+
+
+  TextStyle Notselected = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      letterSpacing: 0.5,
+      fontWeight: FontWeight.w500
+  );
+
+  TextStyle Selected = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 18,
+      letterSpacing: 0.5,
+      fontWeight: FontWeight.w700
+  );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -56,10 +72,9 @@ class _LoginSelectionState extends State<LoginSelection>
                 'Login As',
                 style: TextStyle(
                     fontFamily: 'PlayfairDisplay',
-                    fontSize: 18,
-                    fontStyle: FontStyle.italic,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 0.5),
+                    letterSpacing: 0.7),
               ),
               SizedBox(height: 50),
               Container(
@@ -85,12 +100,11 @@ class _LoginSelectionState extends State<LoginSelection>
                         value == 1
                             ? Text(
                                 'Admin',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
+                                style: Selected
                               )
                             : Text(
                                 'Admin',
-                                style: TextStyle(fontSize: 16),
+                                style:Notselected
                               ),
                         SizedBox(height: 10),
                         value == 1
@@ -105,7 +119,7 @@ class _LoginSelectionState extends State<LoginSelection>
                                       Navigator.pushNamed(
                                           context, '/adminLogin');
                                     },
-                                    child: Icon(Icons.subdirectory_arrow_right)),
+                                    child: Icon(Icons.arrow_forward)),
                               )
                             : Container(),
                       ],
@@ -129,12 +143,11 @@ class _LoginSelectionState extends State<LoginSelection>
                         value == 3
                             ? Text(
                           'Client',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                          style: Selected
                         )
                             : Text(
                           'Client',
-                          style: TextStyle(fontSize: 16),
+                          style: Notselected
                         ),
                         SizedBox(height: 10),
                         value == 3
@@ -154,7 +167,7 @@ class _LoginSelectionState extends State<LoginSelection>
                                 );
                                 Navigator.of(context).push(route);
                               },
-                              child: Icon(Icons.keyboard_arrow_right)),
+                              child: Icon(Icons.arrow_forward)),
                         )
                             : Container(),
                       ],
@@ -178,12 +191,11 @@ class _LoginSelectionState extends State<LoginSelection>
                         value == 2
                             ? Text(
                                 'User',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
+                                style: Selected
                               )
                             : Text(
                                 'User',
-                                style: TextStyle(fontSize: 16),
+                                style: Notselected
                               ),
                         SizedBox(height: 10),
                         value == 2
@@ -203,7 +215,7 @@ class _LoginSelectionState extends State<LoginSelection>
                                       );
                                       Navigator.of(context).push(route);
                                     },
-                                    child: Icon(Icons.keyboard_arrow_right)),
+                                    child: Icon(Icons.arrow_forward)),
                               )
                             : Container(),
                       ],

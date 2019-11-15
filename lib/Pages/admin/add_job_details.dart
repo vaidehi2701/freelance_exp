@@ -46,6 +46,19 @@ class _AddJobDetailState extends State<AddJobDetail> {
     });
   }
 
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   Future ChooseEndDate(BuildContext context, String initialDateString) async {
     var now = new DateTime.now();
     var initialDate = convertToDate(initialDateString) ?? now;
@@ -84,7 +97,7 @@ class _AddJobDetailState extends State<AddJobDetail> {
           width: double.infinity,
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -100,174 +113,179 @@ class _AddJobDetailState extends State<AddJobDetail> {
             ),
             title:  Text(
               "Job Details",
-              style: TextStyle(color: Colors.black),
+              style: ToolbarTitle,
             ),
           ),
           body:   Padding(
-              padding: const EdgeInsets.all(10),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.title),
-                          labelText: 'Job Title 1'
-                      ),
-                      controller: job_title1,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.title),
-                          labelText:'Job Title 2'
-                      ),
-                    ),
-                    Row(children: <Widget>[
-                      Expanded(
-                          child: new TextFormField(
-                            decoration: new InputDecoration(
-                              icon: Icon(Icons.date_range),
-                              hintText: 'Enter starting date',
-                              labelText: 'Start Date',
+            padding: const EdgeInsets.all(10.0),
+            child: Card(
+              child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.title),
+                              labelText: 'Job Title 1',labelStyle: Title
+                          ),
+                          controller: job_title1,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.title),
+                              labelText:'Job Title 2',labelStyle: Title
+                          ),
+                        ),
+                        Row(children: <Widget>[
+                          Expanded(
+                              child: new TextFormField(
+                                decoration: new InputDecoration(
+                                  icon: Icon(Icons.date_range),
+                                  labelText: 'Start Date',labelStyle: Title
+                                ),
+                                controller: start_date,
+                                keyboardType: TextInputType.datetime,
+                              )),
+                          SizedBox(width: 10),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: IconButton(
+                              icon: new Icon(Icons.arrow_drop_down,size: 25,textDirection: prefix0.TextDirection.ltr,),
+                              tooltip: 'Choose date',
+                              onPressed: (() {
+                                ChooseStartDate(context, start_date.text);
+                              }),
                             ),
-                            controller: start_date,
-                            keyboardType: TextInputType.datetime,
-                          )),
-                      SizedBox(width: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: IconButton(
-                          icon: new Icon(Icons.arrow_drop_down,size: 25,textDirection: prefix0.TextDirection.ltr,),
-                          tooltip: 'Choose date',
-                          onPressed: (() {
-                            ChooseStartDate(context, start_date.text);
-                          }),
-                        ),
-                      ),
+                          ),
 
-                    ]),
-                    Row(children: <Widget>[
-                      Expanded(
-                          child: new TextFormField(
-                            decoration: new InputDecoration(
-                              icon: Icon(Icons.date_range),
-                              hintText: 'Enter Ending Date',
-                              labelText: 'End Date',
+                        ]),
+                        Row(children: <Widget>[
+                          Expanded(
+                              child: new TextFormField(
+                                decoration: new InputDecoration(
+                                  icon: Icon(Icons.date_range),
+                                  labelText: 'End Date',labelStyle: Title
+                                ),
+                                controller: end_date,
+                                keyboardType: TextInputType.datetime,
+                              )),
+                          SizedBox(width: 10),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: IconButton(
+                              icon: new Icon(Icons.arrow_drop_down,size: 25,textDirection: prefix0.TextDirection.ltr,),
+                              tooltip: 'Choose date',
+                              onPressed: (() {
+                                ChooseEndDate(context, end_date.text);
+                              }),
                             ),
-                            controller: end_date,
-                            keyboardType: TextInputType.datetime,
-                          )),
-                      SizedBox(width: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: IconButton(
-                          icon: new Icon(Icons.arrow_drop_down,size: 25,textDirection: prefix0.TextDirection.ltr,),
-                          tooltip: 'Choose date',
-                          onPressed: (() {
-                            ChooseEndDate(context, end_date.text);
-                          }),
+                          ),
+
+                        ]),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.date_range),
+                              labelText: 'Working Days In Week',labelStyle: Title
+                          ),
+                          controller: working_days,
                         ),
-                      ),
-
-                    ]),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.date_range),
-                          labelText: 'Working Days In Week'
-                      ),
-                      controller: working_days,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.date_range),
-                          labelText: 'Hour Of Week'
-                      ),
-                      controller: hour_of_week,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.event_available),
-                          labelText: 'Sunday Working Avability'
-                      ),
-                      controller: sunday_avaiblity,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.credit_card),
-                          labelText: 'Payment Terms'
-                      ),
-                      controller: payment_terms,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.location_city),
-                          labelText: 'Job Location'
-                      ),
-                      controller: job_location,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.hotel),
-                          labelText: 'Accommodation Avaiblity'
-                      ),
-                      controller: accommodation,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.directions_car),
-                          labelText: 'One Time Transporation'
-                      ),
-                      controller: one_time_transpotaion,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.directions_bus),
-                          labelText: 'Local Transportaion'
-                      ),
-                      controller: local_transpotation,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.attach_money),
-                          labelText: 'Regular Working Hour Day Rate'
-                      ),
-                      controller: reg_hour_rate,
-                    ),
-
-                    TextFormField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.attach_money),
-                          labelText: 'OverTime Working Hour Rate Per Hour'
-                      ),
-                      controller: overtime_hour_rate,
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,bottom: 10),
-                      child: Container(
-                        width: 130,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Colors.lightBlue,
-                            borderRadius: BorderRadius.circular(10)
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.date_range),
+                              labelText: 'Hour Of Week',labelStyle: Title
+                          ),
+                          controller: hour_of_week,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.event_available),
+                              labelText: 'Sunday Working Avability',labelStyle: Title
+                          ),
+                          controller: sunday_avaiblity,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.credit_card),
+                              labelText: 'Payment Terms',labelStyle: Title
+                          ),
+                          controller: payment_terms,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.location_city),
+                              labelText: 'Job Location',labelStyle: Title
+                          ),
+                          controller: job_location,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.hotel),
+                              labelText: 'Accommodation Avaiblity',labelStyle: Title
+                          ),
+                          controller: accommodation,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.directions_car),
+                              labelText: 'One Time Transporation',labelStyle: Title
+                          ),
+                          controller: one_time_transpotaion,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.directions_bus),
+                              labelText: 'Local Transportaion',labelStyle: Title
+                          ),
+                          controller: local_transpotation,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.attach_money),
+                              labelText: 'Regular Working Hour Day Rate',labelStyle: Title
+                          ),
+                          controller: reg_hour_rate,
                         ),
 
-                        child: Center(
-                            child: GestureDetector(
-                                onTap: (){
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text('Add Job',style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16
-                                ),))
+                        TextFormField(
+                          decoration: InputDecoration(
+                              icon: Icon(Icons.attach_money),
+                              labelText: 'OverTime Working Hour Rate Per Hour',labelStyle: Title
+                          ),
+                          controller: overtime_hour_rate,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
 
-              )
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20,bottom: 10),
+                          child: Container(
+                            width: 130,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(10)
+                            ),
+
+                            child: Center(
+                                child: GestureDetector(
+                                    onTap: (){
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('Add Job',style: TextStyle(
+                                        fontFamily: 'Helvetica',
+                                        fontWeight: FontWeight.w500,
+                                        letterSpacing: 0.7,
+                                        fontSize: 18,
+                                        color: Colors.white
+                                    ),))
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                  )
+              ),
+            ),
           ),
         ),
 

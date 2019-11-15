@@ -6,6 +6,20 @@ class YourJob extends StatefulWidget {
 }
 
 class _YourJobState extends State<YourJob> {
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -15,7 +29,7 @@ class _YourJobState extends State<YourJob> {
           width: double.infinity,
           decoration:new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/option3.jpg"),
+              image: new AssetImage("images/option-3.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -29,9 +43,7 @@ class _YourJobState extends State<YourJob> {
             iconTheme: IconThemeData(
               color: Colors.black, //change your color here
             ),
-            title: Text("Your Job",style: TextStyle(
-              color: Colors.black
-            ),),
+            title: Text("Your Job",style: ToolbarTitle),
           ),
           body:  Padding(
             padding: const EdgeInsets.all(10),
@@ -56,28 +68,21 @@ class _YourJobState extends State<YourJob> {
                           mainAxisAlignment: MainAxisAlignment
                               .spaceBetween,
                           children: <Widget>[
-                            Text("Company Name : ", style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500
-                            ),),
+                            Text("Company Name : ", style: Title),
                             // Text("${widget.company}"),
                           ],
                         ),
                         SizedBox(height: 10),
                         Row(
                           children: <Widget>[
-                            Text("Job Title : ", style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500
-                            ),),
+                            Text("Job Title : ", style: Title),
                             //Text("${widget.start}"),
                           ],
                         ),
                         SizedBox(height:10),
                         Row(
                           children: <Widget>[
-                            Text("Application Status : ", style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500
-                            ),),
+                            Text("Application Status : ", style: Title),
                             //Text("${widget.position}"),
                           ],
                         ),

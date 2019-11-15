@@ -1,4 +1,8 @@
+import 'dart:ui' as prefix0;
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:io';
 import 'package:flutter_radio_button_group/flutter_radio_button_group.dart';
@@ -25,6 +29,19 @@ class _LoginState extends State<Login> {
 
   bool visibilityEmail = false;
   bool visibilityCall = false;
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
 
   void submit() {
     //  final form = formKey.currentState;
@@ -91,9 +108,12 @@ class _LoginState extends State<Login> {
                           child: Text(
                             '${widget.type} Login ',
                             style: TextStyle(
+                                fontFamily: 'PlayFairDisplay',
                                 fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 1),
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing:1.3,
+                                color: Colors.black),
                           ),
                         ),
                       ],
@@ -240,9 +260,11 @@ class _LoginState extends State<Login> {
                              },
                              child: Text('Login',
                          style: TextStyle(
-                               fontWeight: FontWeight.bold,
-                               color: Colors.white,
-                               fontSize: 17),),
+                             fontFamily: 'Helvetica',
+                             fontWeight: FontWeight.w500,
+                             letterSpacing: 0.8,
+                             fontSize: 18,
+                             color: Colors.white),),
                            )),
                      ),
                    ),
@@ -255,8 +277,11 @@ class _LoginState extends State<Login> {
                         child: Text(
                           "Don't Have An Account ? ",
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 17
+                              fontFamily: 'Helvetica',
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0.7,
+                              fontSize: 16,
+                              color: Colors.black
                           ),
                         ),
                       ),

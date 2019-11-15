@@ -18,6 +18,20 @@ class _NotificationState extends State<Notification> {
   final List<String> date = <String>['25-10-19', '15-10-19', '29-12-19','25-10-19', '15-10-19', '29-12-19'];
   final List<int> colorCodes = <int>[600, 500, 100];
 
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -27,7 +41,7 @@ class _NotificationState extends State<Notification> {
           width: double.infinity,
           decoration:new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -40,9 +54,7 @@ class _NotificationState extends State<Notification> {
             iconTheme: IconThemeData(
               color: Colors.black, //change your color here
             ),
-            title: Text("Notifications",style: TextStyle(
-                color: Colors.black
-            ),),
+            title: Text("Notifications",style: ToolbarTitle),
           ),
           body:  ListView.builder(
               padding: const EdgeInsets.all(8),
@@ -57,17 +69,15 @@ class _NotificationState extends State<Notification> {
                             context: context,
                             builder:(BuildContext context){
                               return AlertDialog(
-                                title: Text('${title[index]}'),
+                                title: Text('${title[index]}',style: ToolbarTitle,),
                                 content: Container(
                                   height: 55,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Text(' ${details[index]}'),
+                                      Text(' ${details[index]}',style: Title),
                                       SizedBox(height: 10),
-                                      Text('Last Date : ${date[index]}' , style: TextStyle(
-                                          fontWeight: FontWeight.bold
-                                      ),)
+                                      Text('Last Date : ${date[index]}' , style: Title)
                                     ],
                                   ),
                                 ),
@@ -78,13 +88,13 @@ class _NotificationState extends State<Notification> {
                                         onPressed: (){
                                           Navigator.pushNamed(context, '/Home');
                                         },
-                                        child: Text('Apply'),
+                                        child: Text('Apply',style: Title),
                                       ),
                                       FlatButton(
                                         onPressed: (){
                                           Navigator.of(context).pop();
                                         },
-                                        child: Text('close'),
+                                        child: Text('close',style: Title,),
                                       ),
                                     ],
                                   )
@@ -101,14 +111,14 @@ class _NotificationState extends State<Notification> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('${title[index]}' , style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18
-                                  ),),
+                                  Text('${title[index]}' , style:TextStyle(
+                                      fontFamily: 'SEGOEUI',
+                                      fontSize: 17,
+                                      letterSpacing: 0.5,
+                                      fontWeight: FontWeight.w600
+                                  )),
                                   SizedBox(height: 10),
-                                  Text('Last Date : ${date[index]}' , style: TextStyle(
-                                      fontSize: 15
-                                  ),),
+                                  Text('Last Date : ${date[index]}' , style: Title),
                                 ],
                               ),
                             ),

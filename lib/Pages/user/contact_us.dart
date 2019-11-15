@@ -10,6 +10,18 @@ class ContactUs extends StatefulWidget {
 class _ContactUsState extends State<ContactUs> {
 
     final url = 'www.shethgroupofindustries.com';
+    TextStyle ToolbarTitle = TextStyle(
+        fontFamily: 'Helvetica',
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.5,
+        color: Colors.black
+    );
+
+    TextStyle Title = TextStyle(
+        fontFamily: 'SEGOEUI',
+        fontSize: 16,
+        fontWeight: FontWeight.w500
+    );
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +32,7 @@ class _ContactUsState extends State<ContactUs> {
           width: double.infinity,
           decoration:new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -33,25 +45,31 @@ class _ContactUsState extends State<ContactUs> {
               iconTheme: IconThemeData(
                 color: Colors.black, //change your color here
               ),
-              title: Text("Contact Us",style: TextStyle(
-                  color: Colors.black
-              ),),
+              title: Text("Contact Us",style: ToolbarTitle),
             ),
             body:  Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      image:DecorationImage(
-                        image: AssetImage('images/logo.jpg'),
-
-                      ),
-                    ),
+                SizedBox(height: 15),
+                Image(
+                  image: AssetImage('images/logo.png'),
+                  height: 100,
+                  width: 100,
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: " FREELANC",
+                    style: TextStyle(color: Colors.black, letterSpacing: 1),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'EXP  ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              letterSpacing: 1)),
+                    ],
                   ),
                 ),
+                SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Card(
@@ -64,18 +82,14 @@ class _ContactUsState extends State<ContactUs> {
                                   color: Colors.black87,
                                 ),
                                 title: Text('Sheth Corrosion & Coatings Pvt Ltd',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold
-                                  ),)
+                                  style: Title)
                             ),
                             ListTile(
                                 leading: Icon(
                                   Icons.person,
                                   color: Colors.black87,
                                 ),
-                                title: Text('Mihir Sheth',style: TextStyle(
-                                    fontWeight: FontWeight.bold
-                                ),)
+                                title: Text('Mihir Sheth',style: Title)
                             ),
                             ListTile(
                               leading: Icon(
@@ -85,8 +99,8 @@ class _ContactUsState extends State<ContactUs> {
                               title: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('B/227 Monalisha Business Center,'),
-                                  Text('Manjalpur , Vadodara -390019'),
+                                  Text('B/227 Monalisha Business Center,' ,style: Title),
+                                  Text('Manjalpur , Vadodara -390019',style: Title),
                                 ],
                               ),
                             ),
@@ -97,7 +111,7 @@ class _ContactUsState extends State<ContactUs> {
                                     Icons.call,
                                     color: Colors.black87,
                                   ),
-                                  title: Text('+91 9723312933')
+                                  title: Text('+91 9723312933',style: Title)
                               ),
                             ),
                             GestureDetector(
@@ -107,7 +121,7 @@ class _ContactUsState extends State<ContactUs> {
                                     Icons.mail,
                                     color: Colors.black87,
                                   ),
-                                  title:  Text('shethserv@gmail.com')
+                                  title:  Text('shethserv@gmail.com',style: Title)
                               ),
                             ),
                             GestureDetector(
@@ -117,17 +131,17 @@ class _ContactUsState extends State<ContactUs> {
                                       Icons.mail,
                                       color: Colors.black87,
                                     ),
-                                    title: Text('mihir@shethgroupofindustries.com'))
+                                    title: Text('mihir@shethgroupofindustries.com',style: Title))
                             ),
                             GestureDetector(
                                 onTap: () => launch('http://www.shethgroupofindustries.com'),
                                 child: ListTile(
                                     leading: Icon(
-                                      Icons.wifi,
+                                      Icons.open_in_browser,
                                       color: Colors.black87,
                                     ),
                                     title:
-                                    Text('www.shethgroupofindustries.com'))
+                                    Text('www.shethgroupofindustries.com',style: Title))
                             ),
                           ],
                         ),

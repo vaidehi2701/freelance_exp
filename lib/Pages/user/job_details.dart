@@ -167,6 +167,7 @@ class _JobDetailState extends State<JobDetail> {
                           Icon(Icons.directions_car),
                           SizedBox(width: 10),
                           Text('One Time Trasportation',
+
                             style: TextStyle(
                               fontSize: 17,),),
                         ],
