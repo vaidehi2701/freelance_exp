@@ -87,6 +87,7 @@ class _AddJobDetailState extends State<AddJobDetail> {
       return null;
     }
   }
+   String Add;
 
   @override
   Widget build(BuildContext context) {
@@ -124,22 +125,47 @@ class _AddJobDetailState extends State<AddJobDetail> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                           Expanded(
+                             child: TextFormField(
+                               textInputAction: TextInputAction.next,
+                                    decoration: InputDecoration(
+                                        icon: Icon(Icons.title),
+                                        labelText: 'Job Title 1',labelStyle: Title
+                                    ),
+                                    controller: job_title1,
+                                  ),
+                           ),
+                            
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      Add='one';
+                                    });
+                                  },
+                                  child: Icon(Icons.add)),
+                            ),
+
+                          ],
+                        ),
+
+                        Add == 'one' ?
                         TextFormField(
+                          textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                               icon: Icon(Icons.title),
-                              labelText: 'Job Title 1',labelStyle: Title
+                              labelText:'Job Title 2',
+                              labelStyle: Title
                           ),
-                          controller: job_title1,
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                              icon: Icon(Icons.title),
-                              labelText:'Job Title 2',labelStyle: Title
-                          ),
-                        ),
+                        ) : Container(),
+
                         Row(children: <Widget>[
                           Expanded(
                               child: new TextFormField(
+                                textInputAction: TextInputAction.next,
                                 decoration: new InputDecoration(
                                   icon: Icon(Icons.date_range),
                                   labelText: 'Start Date',labelStyle: Title
@@ -163,6 +189,7 @@ class _AddJobDetailState extends State<AddJobDetail> {
                         Row(children: <Widget>[
                           Expanded(
                               child: new TextFormField(
+                                textInputAction: TextInputAction.next,
                                 decoration: new InputDecoration(
                                   icon: Icon(Icons.date_range),
                                   labelText: 'End Date',labelStyle: Title
@@ -184,6 +211,8 @@ class _AddJobDetailState extends State<AddJobDetail> {
 
                         ]),
                         TextFormField(
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.number ,
                           decoration: InputDecoration(
                               icon: Icon(Icons.date_range),
                               labelText: 'Working Days In Week',labelStyle: Title
@@ -191,6 +220,8 @@ class _AddJobDetailState extends State<AddJobDetail> {
                           controller: working_days,
                         ),
                         TextFormField(
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.number ,
                           decoration: InputDecoration(
                               icon: Icon(Icons.date_range),
                               labelText: 'Hour Of Week',labelStyle: Title
@@ -240,6 +271,8 @@ class _AddJobDetailState extends State<AddJobDetail> {
                           controller: local_transpotation,
                         ),
                         TextFormField(
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.number ,
                           decoration: InputDecoration(
                               icon: Icon(Icons.attach_money),
                               labelText: 'Regular Working Hour Day Rate',labelStyle: Title
@@ -248,6 +281,8 @@ class _AddJobDetailState extends State<AddJobDetail> {
                         ),
 
                         TextFormField(
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.number ,
                           decoration: InputDecoration(
                               icon: Icon(Icons.attach_money),
                               labelText: 'OverTime Working Hour Rate Per Hour',labelStyle: Title
