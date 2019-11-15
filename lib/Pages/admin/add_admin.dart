@@ -161,10 +161,9 @@ class _AddAdminPageState extends State<AddAdmin> {
                   color: Colors.black.withOpacity(0.6)),
               clipper: getClipper(),
             ),
-            Positioned(
-                width: 400.0,
-                top: MediaQuery.of(context).size.height /9,
-                child: Column(
+
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     getProfilePicture(),
                     SizedBox(height: 10.0),
@@ -194,8 +193,8 @@ class _AddAdminPageState extends State<AddAdmin> {
                         width: 145.0,
                         child: Material(
                           borderRadius: BorderRadius.circular(10.0),
-                          shadowColor: Colors.greenAccent,
-                          color: Colors.green,
+                          shadowColor: Colors.red,
+                          color: Colors.red,
                           elevation: 7.0,
                           child: GestureDetector(
                             onTap: () {
@@ -214,9 +213,11 @@ class _AddAdminPageState extends State<AddAdmin> {
                         )),
 
                   ],
-                ))
+                )
+
           ],
-        ));
+        )
+    );
   }
 }
 
@@ -225,7 +226,7 @@ class getClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     var path = new Path();
 
-    path.lineTo(0.0, size.height / 2.7);
+    path.lineTo(0.0, size.height / 2.2);
     path.lineTo(size.width + 95, 0.0);
     path.close();
     return path;

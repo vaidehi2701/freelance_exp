@@ -3,22 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:io';
 import 'package:flutter_radio_button_group/flutter_radio_button_group.dart';
 
-
 class Login extends StatefulWidget {
-
   final String type;
 
-  Login(
-      {Key key,
-        this.type,
-      }
-      ) : super (key : key);
+  Login({
+    Key key,
+    this.type,
+  }) : super(key: key);
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final emailValidation = new TextEditingController();
@@ -30,11 +26,8 @@ class _LoginState extends State<Login> {
   bool visibilityEmail = false;
   bool visibilityCall = false;
 
-
-
-
   void submit() {
-  //  final form = formKey.currentState;
+    //  final form = formKey.currentState;
     Navigator.pushNamed(context, '/verifyotp');
 //    if (form.validate()) {
 //      form.save();
@@ -62,36 +55,28 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1400, allowFontScaling: true);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(
-            color: Colors.black87
-        ),
-      ),
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body:  Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Image.asset('images/selection.png' ,
-                    width: 280,
-                    height: 210,),
-                Expanded(
-                    child: Container()),
-              ],
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/login_back.jpg"),
+              fit: BoxFit.cover,
             ),
+          ),
+        ),
+        Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Colors.transparent,
+          body:
             SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
+                padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -102,19 +87,20 @@ class _LoginState extends State<Login> {
 //                            height : ScreenUtil.getInstance().setHeight(100)),
 
                         Padding(
-                          padding: const EdgeInsets.only(left: 10,top: 20),
-                          child: Text('${widget.type} Login ',
+                          padding: const EdgeInsets.only(left: 10, top: 65),
+                          child: Text(
+                            '${widget.type} Login ',
                             style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
-                                letterSpacing: 1
-                            ),
+                                letterSpacing: 1),
                           ),
                         ),
                       ],
                     ),
                     SizedBox(height: ScreenUtil.getInstance().setHeight(150)),
-                    Container(width: double.infinity,
+                    Container(
+                      width: double.infinity,
                       height: ScreenUtil.getInstance().setHeight(645),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -131,8 +117,7 @@ class _LoginState extends State<Login> {
                               blurRadius: 15,
                             ),
                           ]),
-
-                      child:Container(
+                      child: Container(
                           margin: new EdgeInsets.only(left: 16.0, right: 16.0),
                           child: Form(
                             key: formKey,
@@ -143,163 +128,146 @@ class _LoginState extends State<Login> {
                                   child: FlutterRadioButtonGroup(
                                       textStyle: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.w400
-                                      ),
-                                      items: [
-                                        "None",
-                                        "Call",
-                                        "Email"
-                                      ],
+                                          fontWeight: FontWeight.w400),
+                                      items: ["None", "Call", "Email"],
                                       onSelected: (String selected) {
                                         print("Selected: $selected");
-                                        if(selected == "Call" ) {
+                                        if (selected == "Call") {
                                           setState(() {
-                                            visibilityCall =true;
+                                            visibilityCall = true;
                                           });
-                                        }
-                                        else if(selected == "Email"){
+                                        } else if (selected == "Email") {
                                           setState(() {
-                                            visibilityEmail =true;
+                                            visibilityEmail = true;
                                           });
                                         }
                                       }),
                                 ),
-                                visibilityCall ?  Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 11,
-                                      child: new TextFormField(
-                                        textInputAction: TextInputAction.done,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                          labelText: 'Mobile No',
-                                          hintText: 'Enter Your Mobile Number',
-                                        ),
-                                        validator : validateMobile,
-                                        onSaved: (val) => mobile=val,
-                                      ),
-                                    ),
-
-                                    Expanded(
-                                      flex: 1,
-                                      child: new IconButton(
-                                        color: Colors.grey[400],
-                                        icon: const Icon(Icons.cancel, size: 22.0,),
-                                        onPressed: () {
-                                          setState(() {
-                                            visibilityCall=false;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ) : new Container(),
+                                visibilityCall
+                                    ? Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: <Widget>[
+                                          Expanded(
+                                            flex: 11,
+                                            child: new TextFormField(
+                                              textInputAction:
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
+                                                border: OutlineInputBorder(),
+                                                labelText: 'Mobile No',
+                                                hintText:
+                                                    'Enter Your Mobile Number',
+                                              ),
+                                              validator: validateMobile,
+                                              onSaved: (val) => mobile = val,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: new IconButton(
+                                              color: Colors.grey[400],
+                                              icon: const Icon(
+                                                Icons.cancel,
+                                                size: 22.0,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  visibilityCall = false;
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : new Container(),
                                 SizedBox(height: 20),
-
-                                visibilityEmail ? new Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    new Expanded(
-                                      flex: 11,
-                                      child: TextFormField(
-                                        textInputAction: TextInputAction.done,
-
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: 'Enter Your Email-id',
-                                            labelText: 'Email'
-                                        ),
-                                        validator : validateEmail,
-                                        onSaved: (val) => email=val,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: new IconButton(
-                                        color: Colors.grey[400],
-                                        icon: const Icon(Icons.cancel, size: 22.0,),
-                                        onPressed: () {
-                                          setState(() {
-                                            visibilityEmail=false;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ) : new Container(),
+                                visibilityEmail
+                                    ? new Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: <Widget>[
+                                          new Expanded(
+                                            flex: 11,
+                                            child: TextFormField(
+                                              textInputAction:
+                                                  TextInputAction.done,
+                                              decoration: InputDecoration(
+                                                  border: OutlineInputBorder(),
+                                                  hintText:
+                                                      'Enter Your Email-id',
+                                                  labelText: 'Email'),
+                                              validator: validateEmail,
+                                              onSaved: (val) => email = val,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: new IconButton(
+                                              color: Colors.grey[400],
+                                              icon: const Icon(
+                                                Icons.cancel,
+                                                size: 22.0,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  visibilityEmail = false;
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : new Container(),
                               ],
                             ),
-                          )
-                      ),
+                          )),
                     ),
-                    SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Container(
-                            child: RaisedButton(
-                              onPressed: () {submit();},
-                              padding: const EdgeInsets.all(0.0),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                              //color: Colors.cyan[100],
-                              elevation: 20,
-                              child:Container(
-                                width: 150,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-
-                                      colors: [
-                                        Color.fromARGB(255, 148, 231, 225),
-                                        Color.fromARGB(255, 62, 182, 226)
-                                      ],
-                                    ),
-                                    borderRadius: BorderRadius.all(Radius.circular(10.0))
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 3),
-                                  child: Text('Login' ,
-                                    textAlign: TextAlign.center, style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15,
-                                        color: Colors.white
-                                    ),),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    SizedBox(height: ScreenUtil.getInstance().setHeight(45)),
+                   Align(
+                     alignment: Alignment.bottomRight,
+                     child: Container(
+                       height: 45,
+                       width: 120,
+                       decoration: BoxDecoration(
+                         color: Colors.red,
+                         borderRadius: BorderRadius.circular(10)
+                       ),
+                       child: Center(
+                           child: GestureDetector(
+                             onTap: (){
+                               Navigator.pushNamed(context, '/verifyotp');
+                             },
+                             child: Text('Login',
+                         style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               color: Colors.white,
+                               fontSize: 17),),
+                           )),
+                     ),
+                   ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context,'/SignUp');
+                        Navigator.pushNamed(context, '/SignUp');
                       },
-                      child:  Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text("Don't Have An Account ? " , style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                        ),),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15,top: 13),
+                        child: Text(
+                          "Don't Have An Account ? ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 17
+                          ),
+                        ),
                       ),
                     ),
-                    Image.asset('images/image_02.png')
                   ],
-
                 ),
               ),
+            ),
+        )
 
-            )
-          ],
-        ),
-
+      ],
     );
-
-
   }
 }
-
-

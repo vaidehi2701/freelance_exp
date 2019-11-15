@@ -15,7 +15,7 @@ import 'package:freelance_exp/Pages/user/user_info_layout.dart';
 import 'package:freelance_exp/login_signup/login.dart';
 import 'package:freelance_exp/login_signup/login_selection.dart';
 import 'package:freelance_exp/login_signup/signup.dart';
-import 'package:freelance_exp/login_signup/your_job.dart';
+import 'package:freelance_exp/Pages/user/your_job.dart';
 
 
 import 'Pages/admin/add_admin.dart';

@@ -3,13 +3,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-
 class VerifyOtp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -39,7 +39,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
   void initState() {
     onTapRecognizer = TapGestureRecognizer()
       ..onTap = () {
-        Navigator.pop(context);
+       Navigator.pushNamed(context,'/Home');
       };
 
     super.initState();
@@ -80,7 +80,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
                 child: RichText(
                   text: TextSpan(
                       text: "Enter the code sent to ",
@@ -101,7 +101,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               ),
               Padding(
                   padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
                   child: PinCodeTextField(
                     length: 4,
                     obsecureText: false,
@@ -125,14 +125,14 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                   style: TextStyle(color: Colors.red.shade300, fontSize: 15),
                 ),
               ),
-
               Center(
                 child: CountdownFormatted(
                   duration: Duration(minutes: 1),
                   builder: (BuildContext ctx, String remaining) {
-                    return Text(remaining,style: TextStyle(
-                        fontSize: 16
-                    ),); // 01:00:00
+                    return Text(
+                      remaining,
+                      style: TextStyle(fontSize: 16),
+                    ); // 01:00:00
                   },
                 ),
               ),
@@ -157,50 +157,29 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               SizedBox(
                 height: 14,
               ),
-              Container(
-                margin:
-                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30),
-                child: ButtonTheme(
-                  height: 50,
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/Home');
-//                      // conditions for validating
-//                      if (currentText.length != 4 || currentText != "2561") {
-//                        setState(() {
-//                          hasError = true;
-//                        });
-//                      } else {
-//                        setState(() {
-//                          Navigator.pushNamed(context, '/Home');
-//                          hasError = false;
-//                        });
-//                      }
-                    },
-                    child: Center(
-                        child: Text(
-                          "VERIFY".toUpperCase(),
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        )),
-                  ),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  height: 40,
+                  width: 120,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                      child: GestureDetector(
+                        onTap: () {
+                       Navigator.pushNamed(context, '/Home');
+                       },
+                       child: Text(
+                      'Verify',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 17),
+                    ),
+                  )),
                 ),
-                decoration: BoxDecoration(
-                    color: Colors.green.shade300,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.green.shade200,
-                          offset: Offset(1, -2),
-                          blurRadius: 5),
-                      BoxShadow(
-                          color: Colors.green.shade200,
-                          offset: Offset(-1, 2),
-                          blurRadius: 5)
-                    ]),
-              ),
+              )
             ],
           ),
         ),

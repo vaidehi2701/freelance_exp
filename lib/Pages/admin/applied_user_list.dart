@@ -40,38 +40,62 @@ List<chatModel> dummyData = [
 class _AppliedUserListState extends State<AppliedUserList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Applied User List'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(7.0),
-        child: Container(
-          child: ListView.builder(
-            itemCount: dummyData.length,
-            itemBuilder: (context, i) => Column(
-              children: <Widget>[
-               ListTile(
-                    leading: CircleAvatar(
-                        foregroundColor: Colors.greenAccent,
-                        backgroundImage: AssetImage(dummyData[i].avtarurl)),
-                    title:  Text(
-                      dummyData[i].name,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600, fontSize: 19),
-                    ),
-                    trailing: GestureDetector(
-                        onTap: (){
-                          Navigator.pushNamed(context, '/userInfo');
-                        },
-                        child: Icon(Icons.arrow_right)),
-                  ),
-                Divider(height: 10),
-              ],
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/app_back.jpg"),
+              fit: BoxFit.cover,
             ),
           ),
         ),
-      ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: new AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            iconTheme: IconThemeData(
+              color: Colors.black, //change your color here
+            ),
+            title:Text('Applied User List',style: TextStyle(
+                color: Colors.white
+            ),),
+          ),
+          body:Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: Container(
+              child: ListView.builder(
+                itemCount: dummyData.length,
+                itemBuilder: (context, i) => Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: CircleAvatar(
+                          foregroundColor: Colors.greenAccent,
+                          backgroundImage: AssetImage(dummyData[i].avtarurl)),
+                      title:  Text(
+                        dummyData[i].name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 19),
+                      ),
+                      trailing: GestureDetector(
+                          onTap: (){
+                            Navigator.pushNamed(context, '/userInfo');
+                          },
+                          child: Icon(Icons.arrow_right)),
+                    ),
+                    Divider(height: 10),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+
+      ],
     );
   }
 }

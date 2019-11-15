@@ -27,7 +27,7 @@ class _NotificationState extends State<Notification> {
           width: double.infinity,
           decoration:new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/try.jpg"),
+              image: new AssetImage("images/app_back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -97,18 +97,20 @@ class _NotificationState extends State<Notification> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text('${title[index]}' , style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18
-                                ),),
-                                SizedBox(height: 10),
-                                Text('Last Date : ${date[index]}' , style: TextStyle(
-                                    fontSize: 15
-                                ),),
-                              ],
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text('${title[index]}' , style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18
+                                  ),),
+                                  SizedBox(height: 10),
+                                  Text('Last Date : ${date[index]}' , style: TextStyle(
+                                      fontSize: 15
+                                  ),),
+                                ],
+                              ),
                             ),
                             Icon(Icons.keyboard_arrow_right)
 

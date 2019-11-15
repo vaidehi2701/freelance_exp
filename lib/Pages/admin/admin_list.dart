@@ -9,22 +9,43 @@ class AdminList extends StatefulWidget {
 class _AdminListState extends State<AdminList> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-               title: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: <Widget>[
-                   Text('Admin List'),
-                   GestureDetector(
-                       onTap: (){
-                         Navigator.pushNamed(context,'/addAdmin');
-                       },
-                       child: Icon(Icons.add))
-                 ],
-               ),
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/app_back.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
-            body: GridView.count(
+        Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: new AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              iconTheme: IconThemeData(
+                color: Colors.black, //change your color here
+              ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text('Admin List',
+                      style:TextStyle(
+                          color:Colors.black
+                      )),
+                  GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(context,'/addAdmin');
+                      },
+                      child: Icon(Icons.add))
+                ],
+              ),
+            ),
+            body:GridView.count(
                 crossAxisCount: 2,
                 children: List.generate(admins.length, (index) {
                   return Center(
@@ -33,7 +54,9 @@ class _AdminListState extends State<AdminList> {
                 }
                 )
             )
-        )
+        ),
+
+      ],
     );
   }
 }
@@ -69,7 +92,7 @@ class AdminInfoWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Container(
-                    height: 135,
+                    height: 109,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                             fit: BoxFit.fill,
@@ -87,7 +110,7 @@ class AdminInfoWidget extends StatelessWidget {
 
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue,
+                      color: Colors.red,
                       borderRadius: BorderRadius.only(
                         bottomLeft:  Radius.circular(5.0),
                         bottomRight:  Radius.circular(5.0),
@@ -98,14 +121,16 @@ class AdminInfoWidget extends StatelessWidget {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(admin.title,style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 0.5
-                              ),),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(admin.title,style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 0.5
+                                ),),
+                              ),
                             ),
                             PopupMenuButton(
                               icon: Icon(Icons.more_vert,color: Colors.white,),

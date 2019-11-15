@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:freelance_exp/Pages/user/chat_screen.dart';
-import 'package:freelance_exp/login_signup/home_job_list.dart';
+import 'package:freelance_exp/chat_screen.dart';
+import 'package:freelance_exp/Pages/user/home_job_list.dart';
 import 'package:freelance_exp/Pages/user/user_info_layout.dart';
-import 'package:freelance_exp/login_signup/your_job.dart';
+import 'package:freelance_exp/Pages/user/your_job.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
         );
       case 2:
         return Scaffold(
-          body: Chat(),
+          body: ChatScreen(),
         );
       default:
         return Scaffold(

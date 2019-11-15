@@ -15,7 +15,7 @@ class _YourJobState extends State<YourJob> {
           width: double.infinity,
           decoration:new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/try.jpg"),
+              image: new AssetImage("images/option3.jpg"),
               fit: BoxFit.cover,
             ),
           ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Chat extends StatefulWidget {
+class ChatScreen extends StatefulWidget {
   @override
-  _ChatState createState() => _ChatState();
+  _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatState extends State<Chat> {
+class _ChatScreenState extends State<ChatScreen> {
 
   final List<String> title = <String>['Requirement For Hardware Engineer',
     'Requirement For Softare Engineer', 'Urgent Plumber Required',
-   ];
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class _ChatState extends State<Chat> {
         new Container(
           height: double.infinity,
           width: double.infinity,
-          decoration:new BoxDecoration(
+          decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/try.jpg"),
+              image: new AssetImage("images/option4.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -34,19 +34,11 @@ class _ChatState extends State<Chat> {
             iconTheme: IconThemeData(
               color: Colors.black, //change your color here
             ),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text("Home",style: TextStyle(color: Colors.black),),
-                GestureDetector(
-                    onTap: (){
-                      Navigator.pushNamed(context,'/notification');
-                    },
-                    child: Icon(Icons.notifications,color: Colors.black,))
-              ],
-            ),
+            title:Text('Chat',style: TextStyle(
+                color: Colors.black
+            ),),
           ),
-          body: Column(
+          body:Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -56,14 +48,18 @@ class _ChatState extends State<Chat> {
                     RaisedButton(
                       onPressed: (){},
                       color: Colors.red,
-                      child: Text('Jobs',style: TextStyle(color: Colors.white),),
+                      child: Text('Jobs',style: TextStyle(
+                          color: Colors.white
+                      ),),
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 2),
                     RaisedButton(
                       onPressed: (){},
                       color: Colors.red,
-                      child: Text('Notification',style: TextStyle(color: Colors.white),),
-                    ),
+                      child: Text('Notification',style: TextStyle(
+                          color: Colors.white
+                      ),),
+                    )
                   ],
                 ),
               ),
@@ -76,15 +72,13 @@ class _ChatState extends State<Chat> {
                         child: ListTile(
                           title: Padding(
                             padding: const EdgeInsets.all(3.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text('Company Name:'),
-                                SizedBox(height: 10),
-                                Text('Job Title :'),
-                              ],
-                            ),
+                            child : Text('Job Title :'),
                           ),
+                          trailing:GestureDetector(
+                              onTap: (){
+                                Navigator.pushNamed(context,'/adminJobUser');
+                              },
+                              child: (Icon(Icons.keyboard_arrow_right))),
                         ),
                       );
                     }
@@ -93,6 +87,7 @@ class _ChatState extends State<Chat> {
             ],
           ),
         ),
+
       ],
     );
   }

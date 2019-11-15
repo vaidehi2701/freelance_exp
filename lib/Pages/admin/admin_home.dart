@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-import 'package:freelance_exp/Pages/admin/admin_chat.dart';
+import 'package:freelance_exp/chat_screen.dart';
 import 'package:freelance_exp/Pages/admin/admin_job_list.dart';
 import 'package:freelance_exp/Pages/admin/admin_list.dart';
 import 'package:freelance_exp/Pages/admin/admin_noti_list.dart';
@@ -30,6 +30,10 @@ class _AdminHomePageState extends State<AdminHomePage> {
         ),
       ),
       bottomNavigationBar: FancyBottomNavigation(
+        circleColor: Colors.red,
+        activeIconColor: Colors.white,
+        textColor: Colors.black,
+        inactiveIconColor: Colors.black,
         tabs: [
           TabData(
               iconData: Icons.home,
@@ -74,7 +78,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
         );
       case 2:
         return Scaffold(
-          body:AdminChat(),
+          body:ChatScreen(),
         );
       default:
         return Scaffold(

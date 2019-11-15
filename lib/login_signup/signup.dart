@@ -405,202 +405,190 @@ class _sign_upState extends State<sign_up> {
     );
 
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          iconTheme: IconThemeData(
-              color: Colors.black87
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/login_back.jpg"),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-        body: SafeArea(
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body:SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 30 , right: 30),
+              child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0),
-                    child: Image.asset('images/selection.png',
-                      width: 260,
-                      height: 160,),
-                  ),
-
-                ],
-              ),
-              SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30 , right: 30),
-                  child: Column(
+                  SizedBox(height: 55),
+                  Row(
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10,top: 30),
-                            child: Text('SIGN UP ',
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 1
-                              ),
-                            ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10,top: 30),
+                        child: Text('SIGN UP ',
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1
                           ),
-                        ],
-                      ),
-                      SizedBox(height: 55),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0, 15),
-                                blurRadius: 15,
-                              ),
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0, -10),
-                                blurRadius: 15,
-                              ),
-                            ]),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Form(
-                              child: Padding(
-                                padding: const EdgeInsets.all(25.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    NameWidget,
-
-                                    SizedBox(height: 10),
-                                    BdayWidget,
-
-                                    SizedBox(height: 10),
-                                    PrimaryNumberWidget,
-
-                                    SizedBox(height: 10),
-                                    SecondaryNumberWidget,
-
-                                    SizedBox(height: 10),
-                                   PrimaryEmailWidget,
-
-                                    SizedBox(height: 10),
-                                    SecondaryEmailWidget,
-
-                                    SizedBox(height: 10),
-                                    PermanentAddressWidget,
-
-                                    SizedBox(height: 10),
-                                    TemporaryAddressWidget,
-
-                                    SizedBox(height: 10),
-                                   AdharCardWidget,
-                                    Row(
-                                      children: <Widget>[
-                                        SizedBox(width: 5),
-                                        Text("Upload Adhar Card:"),
-                                        SizedBox(width: 15),
-
-                                        RaisedButton(
-                                          onPressed: (){
-                                          showAlertDialog(context);
-                                        },
-                                          focusNode: fnAdharCardButton,
-                                          child: Text('Upload'),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Container(
-                                        width: 300,
-                                        height: 150,
-                                        decoration: BoxDecoration(
-                                           image: DecorationImage(
-                                             fit: BoxFit.fill,
-                                             image: adharCardImage == null ? AssetImage('images/noprofile.jpg') : FileImage(adharCardImage),
-                                           ),
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            boxShadow: [
-                                              BoxShadow(
-                                              color: Colors.white,
-                                              blurRadius: 2.0,
-                                            ),]
-                                        ),
-
-
-                                      ),
-                                    ),
-
-                                    SizedBox(height: 10),
-                                    PanCardWidget,
-                                    Row(
-                                      children: <Widget>[
-                                        SizedBox(width: 5),
-                                        Text("Upload PAN Card:"),
-                                        SizedBox(width: 15),
-                                        RaisedButton(
-                                          onPressed: () {
-                                            showAlertDialog(context);
-                                          },
-                                          focusNode: fnPanCardButton,
-                                          child: Text('Upload'),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Container(
-                                        width: 300,
-                                        height: 150,
-                                        decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              fit: BoxFit.fill,
-                                              image: panCardImge == null  ? AssetImage('images/noprofile.jpg') : FileImage(panCardImge),
-                                            ),
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                            boxShadow: [ BoxShadow(
-                                              color: Colors.white,
-                                              blurRadius: 2.0,
-                                            ),]
-                                        ),
-
-                                      ),
-                                    ),
-                                    SizedBox(height: 10),
-                                  ],
-                                ),
-                              ),
-                            )
-
-                          ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: SignUpButton
-                          ),
-                        ],
-                      ),
-                      Image.asset('images/image_02.png')
                     ],
                   ),
-                ),
+                  SizedBox(height: 55),
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(0, 15),
+                            blurRadius: 15,
+                          ),
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(0, -10),
+                            blurRadius: 15,
+                          ),
+                        ]),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Form(
+                          child: Padding(
+                            padding: const EdgeInsets.all(25.0),
+                            child: Column(
+                              children: <Widget>[
+                                NameWidget,
+
+                                SizedBox(height: 10),
+                                BdayWidget,
+
+                                SizedBox(height: 10),
+                                PrimaryNumberWidget,
+
+                                SizedBox(height: 10),
+                                SecondaryNumberWidget,
+
+                                SizedBox(height: 10),
+                                PrimaryEmailWidget,
+
+                                SizedBox(height: 10),
+                                SecondaryEmailWidget,
+
+                                SizedBox(height: 10),
+                                PermanentAddressWidget,
+
+                                SizedBox(height: 10),
+                                TemporaryAddressWidget,
+
+                                SizedBox(height: 10),
+                                AdharCardWidget,
+                                Row(
+                                  children: <Widget>[
+                                    SizedBox(width: 5),
+                                    Text("Upload Adhar Card:"),
+                                    SizedBox(width: 15),
+
+                                    RaisedButton(
+                                      onPressed: (){
+                                        showAlertDialog(context);
+                                      },
+                                      focusNode: fnAdharCardButton,
+                                      child: Text('Upload'),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Container(
+                                    width: 300,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: adharCardImage == null ? AssetImage('images/noprofile.jpg') : FileImage(adharCardImage),
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.white,
+                                            blurRadius: 2.0,
+                                          ),]
+                                    ),
+
+
+                                  ),
+                                ),
+
+                                SizedBox(height: 10),
+                                PanCardWidget,
+                                Row(
+                                  children: <Widget>[
+                                    SizedBox(width: 5),
+                                    Text("Upload PAN Card:"),
+                                    SizedBox(width: 15),
+                                    RaisedButton(
+                                      onPressed: () {
+                                        showAlertDialog(context);
+                                      },
+                                      focusNode: fnPanCardButton,
+                                      child: Text('Upload'),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Container(
+                                    width: 300,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: panCardImge == null  ? AssetImage('images/noprofile.jpg') : FileImage(panCardImge),
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        boxShadow: [ BoxShadow(
+                                          color: Colors.white,
+                                          blurRadius: 2.0,
+                                        ),]
+                                    ),
+
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                              ],
+                            ),
+                          ),
+                        )
+
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: SignUpButton
+                      ),
+                    ],
+                  ),
+                  Image.asset('images/image_02.png')
+                ],
               ),
-            ],
+            ),
           ),
         ),
 
-      ),
+      ],
     );
   }
 }

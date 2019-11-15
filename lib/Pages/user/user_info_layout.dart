@@ -4,13 +4,15 @@ import 'dart:io';
 import 'package:date_range_picker/date_range_picker.dart' as DateRagePicker;
 import 'package:intl/intl.dart';
 
-
 class UserInfo extends StatefulWidget {
+
   @override
   _UserInfoState createState() => _UserInfoState();
 }
 
 class _UserInfoState extends State<UserInfo> {
+
+
   TabController _controller;
 
   DateTime startDate = DateTime.now();
@@ -161,7 +163,7 @@ class _UserInfoState extends State<UserInfo> {
           width: double.infinity,
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/try.jpg"),
+              image: new AssetImage("images/app_back.jpg"),
               fit: BoxFit.cover,
             ),
           ),

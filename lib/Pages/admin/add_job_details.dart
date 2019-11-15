@@ -77,13 +77,35 @@ class _AddJobDetailState extends State<AddJobDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Job Details'),
-      ),
-      body:  Padding(
-        padding: const EdgeInsets.all(10),
-        child: SingleChildScrollView(
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/app_back.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: new AppBar(
+
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            iconTheme: IconThemeData(
+              color: Colors.black, //change your color here
+            ),
+            title:  Text(
+              "Job Details",
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+          body:   Padding(
+              padding: const EdgeInsets.all(10),
+              child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
                     TextFormField(
@@ -95,8 +117,8 @@ class _AddJobDetailState extends State<AddJobDetail> {
                     ),
                     TextFormField(
                       decoration: InputDecoration(
-                        icon: Icon(Icons.title),
-                        labelText:'Job Title 2'
+                          icon: Icon(Icons.title),
+                          labelText:'Job Title 2'
                       ),
                     ),
                     Row(children: <Widget>[
@@ -219,15 +241,15 @@ class _AddJobDetailState extends State<AddJobDetail> {
                       controller: overtime_hour_rate,
                     ),
 
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10,bottom: 10),
-                    child: Container(
-                      width: 130,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: Colors.lightBlue,
-                        borderRadius: BorderRadius.circular(10)
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10,bottom: 10),
+                      child: Container(
+                        width: 130,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            color: Colors.lightBlue,
+                            borderRadius: BorderRadius.circular(10)
+                        ),
 
                         child: Center(
                             child: GestureDetector(
@@ -235,18 +257,21 @@ class _AddJobDetailState extends State<AddJobDetail> {
                                   Navigator.of(context).pop();
                                 },
                                 child: Text('Add Job',style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16
                                 ),))
                         ),
                       ),
-                  ),
+                    ),
                   ],
                 ),
 
-            )
+              )
           ),
+        ),
+
+      ],
     );
   }
 }

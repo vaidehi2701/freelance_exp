@@ -102,31 +102,55 @@ class AdminJobUserChatState extends State<AdminJobUserChat> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(
-        title: Text('User'),
-      ),
-      body: Column(
-        children: <Widget>[
-          new Flexible(
-            child: new ListView.builder(
-              padding: new EdgeInsets.all(8.0),
-              reverse: true,
-              itemBuilder: (_, int index) => _messages[index],
-              itemCount: _messages.length,
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/app_back.jpg"),
+              fit: BoxFit.cover,
             ),
           ),
-          new Divider(
-            height: 1.0,
-          ),
-          new Container(
-            decoration: new BoxDecoration(
-              color: Theme.of(context).cardColor,
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: new AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            iconTheme: IconThemeData(
+              color: Colors.black, //change your color here
             ),
-            child: _textComposerWidget(),
+            title:  Text(
+              "UserName",
+              style: TextStyle(color: Colors.black),
+            ),
           ),
-        ],
-      ),
+          body:Column(
+            children: <Widget>[
+              new Flexible(
+                child: new ListView.builder(
+                  padding: new EdgeInsets.all(8.0),
+                  reverse: true,
+                  itemBuilder: (_, int index) => _messages[index],
+                  itemCount: _messages.length,
+                ),
+              ),
+              new Divider(
+                height: 1.0,
+              ),
+              new Container(
+                decoration: new BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                ),
+                child: _textComposerWidget(),
+              ),
+            ],
+          ),
+        ),
+
+      ],
     );
   }
 }

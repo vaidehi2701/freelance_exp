@@ -15,19 +15,55 @@ class _LoginSelectionState extends State<LoginSelection>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Image(
-            image: AssetImage('images/logo.jpg'),
-            height: 80,
-            width: 80,
+    return Stack(
+      children: <Widget>[
+        new Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/splash_back.jpg"),
+              fit: BoxFit.cover,
+            ),
           ),
-          Column(
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Text('Login As'),
-              SizedBox(height: 20),
+              Image(
+                image: AssetImage('images/logo.png'),
+                height: 150,
+                width: 150,
+              ),
+              RichText(
+                text: TextSpan(
+                  text: " FREELANC",
+                  style: TextStyle(color: Colors.black, letterSpacing: 1),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'EXP  ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            letterSpacing: 1)),
+                  ],
+                ),
+              ),
+              SizedBox(height: 90),
+              Text(
+                'Login As',
+                style: TextStyle(
+                    fontFamily: 'PlayfairDisplay',
+                    fontSize: 18,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5),
+              ),
+              SizedBox(height: 50),
               Container(
+                height: 220,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -69,11 +105,61 @@ class _LoginSelectionState extends State<LoginSelection>
                                       Navigator.pushNamed(
                                           context, '/adminLogin');
                                     },
-                                    child: Icon(Icons.keyboard_arrow_right)),
+                                    child: Icon(Icons.subdirectory_arrow_right)),
                               )
                             : Container(),
                       ],
                     ),
+                    SizedBox(width: 5),
+                    Column(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              value = 3;
+                            });
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            backgroundImage: AssetImage('images/user_girl.png'),
+                            radius: value == 3 ? 65 : 40,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        value == 3
+                            ? Text(
+                          'Client',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        )
+                            : Text(
+                          'Client',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        SizedBox(height: 10),
+                        value == 3
+                            ? Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(15.0)),
+                          child: GestureDetector(
+                              onTap: () {
+                                var route = new MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                  new Login(
+                                    type: "Client",
+                                  ),
+                                );
+                                Navigator.of(context).push(route);
+                              },
+                              child: Icon(Icons.keyboard_arrow_right)),
+                        )
+                            : Container(),
+                      ],
+                    ),
+                    SizedBox(width: 5),
                     Column(
                       children: <Widget>[
                         GestureDetector(
@@ -122,62 +208,14 @@ class _LoginSelectionState extends State<LoginSelection>
                             : Container(),
                       ],
                     ),
-                    Column(
-                      children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              value = 3;
-                            });
-                          },
-                          child: CircleAvatar(
-                            backgroundColor: Colors.white,
-                            backgroundImage: AssetImage('images/client.png'),
-                            radius: value == 3 ? 65 : 40,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        value == 3
-                            ? Text(
-                                'Client',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              )
-                            : Text(
-                                'Client',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                        SizedBox(height: 10),
-                        value == 3
-                            ? Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius: BorderRadius.circular(15.0)),
-                                child: GestureDetector(
-                                    onTap: () {
-                                      var route = new MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            new Login(
-                                          type: "Client",
-                                        ),
-                                      );
-                                      Navigator.of(context).push(route);
-                                    },
-                                    child: Icon(Icons.keyboard_arrow_right)),
-                              )
-                            : Container(),
-                      ],
-                    ),
+
                   ],
                 ),
               ),
-              SizedBox(height: 40)
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
