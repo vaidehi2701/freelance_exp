@@ -70,6 +70,19 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
     }
   }
 
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -79,7 +92,7 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
           width: double.infinity,
           decoration:new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("images/app_back.jpg"),
+              image: new AssetImage("images/back.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -92,7 +105,7 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
               iconTheme: IconThemeData(
                 color: Colors.black, //change your color here
               ),
-              title: Text("Add Work Experience",style: TextStyle(color: Colors.black),),
+              title: Text("Add Work Experience",style:ToolbarTitle),
             ),
             body:  Padding(
               padding: const EdgeInsets.all(15.0),
@@ -106,9 +119,8 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
                       children: <Widget>[
                         TextFormField(
                           decoration: InputDecoration(
-                              icon: Icon(Icons.supervised_user_circle),
-                              hintText: 'Enter Job Title',
-                              labelText: 'Job Title'
+                              icon: Icon(Icons.title),
+                              labelText: 'Job Title',labelStyle: Title
                           ),
                           controller: job_title,
                         ),
@@ -118,8 +130,7 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
                               child: new TextFormField(
                                 decoration: new InputDecoration(
                                   icon: Icon(Icons.date_range),
-                                  hintText: 'Enter starting date',
-                                  labelText: 'Start Date',
+                                  labelText: 'Start Date',labelStyle: Title
                                 ),
                                 controller: start_date,
                                 keyboardType: TextInputType.datetime,
@@ -142,8 +153,7 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
                               child: new TextFormField(
                                 decoration: new InputDecoration(
                                   icon: Icon(Icons.date_range),
-                                  hintText: 'Enter Ending Date',
-                                  labelText: 'End Date',
+                                  labelText: 'End Date',labelStyle: Title
                                 ),
                                 controller: end_date,
                                 keyboardType: TextInputType.datetime,
@@ -164,8 +174,7 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
                         TextFormField(
                           decoration: InputDecoration(
                               icon: Icon(Icons.supervised_user_circle),
-                              hintText: 'Client Name',
-                              labelText: 'Client'
+                              labelText: 'Client',labelStyle: Title
                           ),
                           controller: client_name,
                         ),
@@ -174,24 +183,21 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
                         TextFormField(
                           decoration: InputDecoration(
                               icon: Icon(Icons.account_balance),
-                              hintText: 'Type Of Job',
-                              labelText: 'Job Type'
+                              labelText: 'Job Type',labelStyle: Title
                           ),
                           controller: job_type,
                         ),
                         TextFormField(
                           decoration: InputDecoration(
                               icon: Icon(Icons.account_balance),
-                              hintText: 'Enter Scope Of Work',
-                              labelText: 'Scope Of Work'
+                              labelText: 'Scope Of Work',labelStyle: Title
                           ),
                           controller: scope_work,
                         ),
                         TextFormField(
                           decoration: InputDecoration(
                               icon: Icon(Icons.account_balance),
-                              hintText: 'Enter Standards Followed',
-                              labelText: 'Standards Followed'
+                              labelText: 'Standards Followed',labelStyle: Title
                           ),
                           controller: standard_followed,
                         ),
@@ -218,8 +224,11 @@ class _AddWorkExperienceState extends State<AddWorkExperience> {
                               },
                               color: Colors.red,
                               child: Text('Save Work Experience',style: TextStyle(
+                                  fontFamily: 'SEGOEUI',
+                                  fontSize: 17,
+                                  letterSpacing: 0.7,
                                   color: Colors.white,
-                                  fontSize: 16
+                                  fontWeight: FontWeight.w600
                               ),),
                             ),
                           ),

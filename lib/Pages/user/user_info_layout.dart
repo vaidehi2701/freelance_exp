@@ -245,7 +245,7 @@ class _UserInfoState extends State<UserInfo> {
                             ),
                             child: Card(
                               child: Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: const EdgeInsets.all(5.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
@@ -268,14 +268,25 @@ class _UserInfoState extends State<UserInfo> {
                                         unselectedLabelColor: Colors.red[300],
                                         tabs: [
                                           Tab(
-                                            child: Text('Summary',style: Title,),
+                                            child: Text('Summary',style: TextStyle(
+                                                fontFamily: 'SEGOEUI',
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w500
+                                            ),),
                                           ),
                                           Tab(
-                                            child: Text('Avability',style: Title,),
-
+                                            child: Text('Avability',style: TextStyle(
+                                                fontFamily: 'SEGOEUI',
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w500
+                                            ),),
                                           ),
                                           Tab(
-                                            child: Text(' Experience',style: Title,),
+                                            child: Text('Experience',style: TextStyle(
+                                                fontFamily: 'SEGOEUI',
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w500
+                                            ),),
                                             
                                           ),
                                         ],

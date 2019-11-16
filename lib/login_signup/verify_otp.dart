@@ -34,15 +34,15 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
 
   bool hasError = false;
   String currentText = "";
+
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
-    onTapRecognizer = TapGestureRecognizer()
-      ..onTap = () {
-       Navigator.pushNamed(context,'/Home');
-      };
-
-    super.initState();
+//    onTapRecognizer = TapGestureRecognizer()
+//      ..onTap = () {
+//       Navigator.pushNamed(context,'/Home');
+//      };
+//    super.initState();
   }
 
   @override
@@ -168,10 +168,9 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                   child: Center(
                       child: GestureDetector(
                         onTap: () {
-                       Navigator.pushNamed(context, '/Home');
+                       Navigator.pushNamed(context,'/Home');
                        },
-                       child: Text(
-                      'Verify',
+                       child: Text('Verify',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

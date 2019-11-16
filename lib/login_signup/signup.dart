@@ -356,7 +356,7 @@ class _sign_upState extends State<sign_up> {
           backgroundColor: Colors.transparent,
           body:SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(left: 30 , right: 30),
+              padding: const EdgeInsets.only(left: 10 , right: 10),
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 55),
@@ -400,7 +400,7 @@ class _sign_upState extends State<sign_up> {
                       children: <Widget>[
                         Form(
                           child: Padding(
-                            padding: const EdgeInsets.all(25.0),
+                            padding: const EdgeInsets.all(15.0),
                             child: Column(
                               children: <Widget>[
                                 NameWidget,
