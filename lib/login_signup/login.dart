@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'dart:io';
-import 'package:flutter_radio_button_group/flutter_radio_button_group.dart';
 
 class Login extends StatefulWidget {
   final String type;
@@ -27,8 +25,8 @@ class _LoginState extends State<Login> {
   String email;
   String mobile;
 
-  bool visibilityEmail = false;
-  bool visibilityCall = false;
+
+  String text = "empty";
 
   TextStyle ToolbarTitle = TextStyle(
       fontFamily: 'Helvetica',
@@ -43,31 +41,34 @@ class _LoginState extends State<Login> {
       fontWeight: FontWeight.w500
   );
 
-  void submit() {
-    //  final form = formKey.currentState;
-    Navigator.pushNamed(context, '/verifyotp');
-//    if (form.validate()) {
-//      form.save();
-//      Navigator.pushNamed(context, '/Otp');
-//
-//    }
-  }
+  String submit() {
 
-  String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
-    else
-      return null;
-  }
 
-  String validateMobile(String value) {
-    if (value.length != 10)
-      return 'Mobile Number must be of 10 digit';
+    if(emailValidation.text.toString().trim().trimLeft().trimRight().toString().length != 0)
+      {
+        if (regex.hasMatch(emailValidation.text.trim().trimLeft().trimRight().toString()))
+         { Navigator.pushNamed(context,'/verifyotp');
+           return 'empty'; }
+        else
+          { return ' * Enter Valid Email Id'; }
+
+      }
+    else if(mobileValidation.text.toString().length > 0)
+    {
+
+      if (mobileValidation.text.toString().length == 10)
+          { Navigator.pushNamed(context, '/verifyotp');
+            return 'empty'; }
+
+      else
+        { return ' * Mobile Number must be of 10 digit'; }
+      }
     else
-      return null;
+      { return ' * Plese Fill Nessary Details'; }
+
   }
 
   @override
@@ -99,10 +100,6 @@ class _LoginState extends State<Login> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-//                        Image.asset('image/logo.png',
-//                            width : ScreenUtil.getInstance().setWidth(100),
-//                            height : ScreenUtil.getInstance().setHeight(100)),
-
                         Padding(
                           padding: const EdgeInsets.only(left: 10, top: 65),
                           child: Text(
@@ -139,69 +136,72 @@ class _LoginState extends State<Login> {
                           ]),
                       child: Container(
                         margin: new EdgeInsets.only(left: 16.0, right: 16.0),
-                        child: Form(
-                          key: formKey,
                           child: Column(
                             children: <Widget>[
                               SizedBox(height: 25),
-                              TextFormField(
-                                textInputAction:
-                                TextInputAction.done,
+                              TextField(
+                                textInputAction: TextInputAction.next,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'Mobile No',
                                   hintText:
                                   'Enter Your Mobile Number',
                                 ),
-                                validator: validateMobile,
-                                onSaved: (val) => mobile = val,
+                                controller: mobileValidation,
                               ),
                               SizedBox(height: 15),
                               Text('OR'),
                               SizedBox(height: 15),
-                              Expanded(
-
-                                child: TextFormField(
-                                  textInputAction:
-                                  TextInputAction.done,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      hintText:
-                                      'Enter Your Email-id',
-                                      labelText: 'Email'),
-                                     validator: validateEmail,
-                                     onSaved: (val) => email = val,
+                              TextField(
+                                textInputAction: TextInputAction.done,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                    hintText: 'Enter Your Email-id',
+                                    labelText: 'Email Id'
                                 ),
+                                controller: emailValidation,
                               ),
                               SizedBox(height: 20),
                             ],
                           ),
-                        ),
                       ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20,left: 10),
+                      child: Text(text == "empty" ? "" : text,style: TextStyle(
+                          fontFamily: 'SEGOEUI',
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        color: Colors.red
+                      ),),
                     ),
                     SizedBox(height: ScreenUtil.getInstance().setHeight(45)),
                    Align(
                      alignment: Alignment.bottomRight,
-                     child: Container(
-                       height: 45,
-                       width: 120,
-                       decoration: BoxDecoration(
-                         color: Colors.red,
-                         borderRadius: BorderRadius.circular(10)
-                       ),
-                       child: Center(
-                           child: GestureDetector(
-                             onTap: (){
-                               Navigator.pushNamed(context, '/verifyotp');
-                             },
+                     child: GestureDetector(
+                       onTap: (){
+                         setState(() {
+                           text = submit();
+                         });
+                       },
+                       child: Container(
+                         height: 45,
+                         width: 120,
+                         decoration: BoxDecoration(
+                           color: Colors.red,
+                           borderRadius: BorderRadius.circular(10)
+                         ),
+                         child: Center(
                              child: Text('Send OTP',
-                         style: TextStyle(
-                             fontFamily: 'Helvetica',
-                             fontWeight: FontWeight.w500,
-                             letterSpacing: 0.8,
-                             fontSize: 17,
-                             color: Colors.white),),
-                           )),
+                           style: TextStyle(
+                               fontFamily: 'Helvetica',
+                               fontWeight: FontWeight.w500,
+                               letterSpacing: 0.3,
+                               fontSize: 17,
+                               color: Colors.white),),
+
+                         ),
+                       ),
                      ),
                    ),
                     GestureDetector(

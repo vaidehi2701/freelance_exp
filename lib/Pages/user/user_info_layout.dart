@@ -211,15 +211,15 @@ class _UserInfoState extends State<UserInfo> {
                       children: <Widget>[
                         GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, '/notification');
+                              Navigator.pushNamed(context, '/contactUs');
                             },
-                            child: Icon(Icons.notifications)),
+                            child: Icon(Icons.contact_phone)),
                         SizedBox(width: 15),
                         GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, '/contactUs');
+                              Navigator.pushNamed(context, '/notification');
                             },
-                            child: Icon(Icons.contact_phone))
+                            child: Icon(Icons.exit_to_app)),
                       ],
                     ),
                   ],

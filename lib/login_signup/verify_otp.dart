@@ -159,25 +159,12 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               ),
               Align(
                 alignment: Alignment.center,
-                child: Container(
-                  height: 40,
-                  width: 120,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                       Navigator.pushNamed(context,'/Home');
-                       },
-                       child: Text('Verify',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 17),
-                    ),
-                  )),
-                ),
+                child: RaisedButton(
+                  onPressed: (){
+                    Navigator.pushNamed(context,'/home');
+                  },
+                  child: Text('Verify'),
+                )
               )
             ],
           ),

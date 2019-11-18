@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix1;
 import 'package:freelance_exp/Pages/admin/add_job_details.dart';
 import 'package:freelance_exp/Pages/admin/admin_job_detail.dart';
 import 'package:freelance_exp/Pages/admin/admin_job_user.dart';
@@ -35,7 +34,7 @@ void main() => runApp(MaterialApp(
     '/verifyotp' :(context) => VerifyOtp(),
     '/adminLogin' :(context) => AdminLogin(),
     '/SignUp':(context) => sign_up(),
-    '/Home':(context) => HomePage(),
+    '/home':(context) => HomePage(),
     '/addWorkExperience':(context) => AddWorkExperience(),
     '/addSkill':(context) => AddSkill(),
     '/notification':(context) => prefix0.Notification(),
