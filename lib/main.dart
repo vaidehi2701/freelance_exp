@@ -22,6 +22,7 @@ import 'Pages/user/add_skill.dart';
 import 'Pages/admin/admin_home.dart';
 import 'login_signup/admin_login.dart';
 import 'Pages/user/job_details.dart';
+import 'login_signup/intro_slider.dart';
 import 'login_signup/verify_otp.dart';
 
 
@@ -29,7 +30,8 @@ void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
   initialRoute: '/',
   routes: {
-    '/' :(context) => LoginSelection(),
+    '/' :(context) => IntroSlider(),
+    '/loginSelection' :(context) => LoginSelection(),
     '/login' :(context) => Login(),
     '/verifyotp' :(context) => VerifyOtp(),
     '/adminLogin' :(context) => AdminLogin(),

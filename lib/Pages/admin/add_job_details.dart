@@ -308,7 +308,7 @@ class _AddJobDetailState extends State<AddJobDetail> {
                                     child: Text('Add Job',style: TextStyle(
                                         fontFamily: 'Helvetica',
                                         fontWeight: FontWeight.w500,
-                                        letterSpacing: 0.7,
+                                        letterSpacing: 0.8,
                                         fontSize: 18,
                                         color: Colors.white
                                     ),))

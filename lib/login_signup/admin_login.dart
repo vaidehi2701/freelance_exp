@@ -12,37 +12,11 @@ class _AdminLoginState extends State<AdminLogin> {
 
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
-  final emailValidation = new TextEditingController();
-  final mobileValidation = new TextEditingController();
+  final adminIdValidation = new TextEditingController();
+  final adminPasswordValidation = new TextEditingController();
 
-  String email;
-  String mobile;
-
-
-  void submit() {
-    final form = formKey.currentState;
-    if (form.validate()) {
-      form.save();
-      Navigator.pushNamed(context, '/Otp');
-    }
-  }
-
-  String validateEmail(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
-    else
-      return null;
-  }
-
-  String validateMobile(String value) {
-    if (value.length != 10)
-      return 'Mobile Number must be of 10 digit';
-    else
-      return null;
-  }
+  String adminId;
+  String adminPass;
 
 
   TextStyle Title = TextStyle(
@@ -128,14 +102,13 @@ class _AdminLoginState extends State<AdminLogin> {
                                       padding: const EdgeInsets.only(left: 25, right: 25),
                                       child: TextFormField(
                                         textInputAction: TextInputAction.done,
-                                        controller: emailValidation,
+                                        controller: adminIdValidation,
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(),
                                             hintText: 'Enter Your Admin-id', hintStyle: Title,
                                             labelText: 'Admin Id',labelStyle: Title
                                         ),
-                                        validator : validateEmail,
-                                        onSaved: (val) => email=val,
+                                        onSaved: (val) => adminId=val,
                                       ),
                                     ),
 
@@ -145,13 +118,13 @@ class _AdminLoginState extends State<AdminLogin> {
                                       child: TextFormField(
                                         textInputAction: TextInputAction.done,
                                         obscureText: true,
+                                        controller: adminPasswordValidation,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
                                           labelText: 'Password', hintStyle: Title,
                                           hintText: 'Enter Your Password',labelStyle: Title
                                         ),
-                                        validator : validateMobile,
-                                        onSaved: (val) => mobile=val,
+                                        onSaved: (val) => adminPass=val,
                                       ),
                                     ),
 
@@ -164,24 +137,27 @@ class _AdminLoginState extends State<AdminLogin> {
                         SizedBox(height: 40),
                         Align(
                           alignment: Alignment.bottomRight,
-                          child: Container(
-                            height: 45,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(10)
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.pushNamed(context, '/adminHome');
+                            },
+                            child: Container(
+                              height: 45,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(10)
+                              ),
+                              child: Center(
+                                  child:  Text('Login',
+                                      style: TextStyle(
+                                          fontFamily: 'Helvetica',
+                                          fontWeight: FontWeight.w500,
+                                          letterSpacing: 0.8,
+                                          fontSize: 18,
+                                          color: Colors.white),),
+                                  ),
                             ),
-                            child: Center(
-                                child: GestureDetector(
-                                  onTap: (){
-                                    Navigator.pushNamed(context, '/adminHome');
-                                  },
-                                  child: Text('Login',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 17),),
-                                )),
                           ),
                         ),
 

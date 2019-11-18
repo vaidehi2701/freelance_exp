@@ -32,7 +32,9 @@ class ChatMessage extends StatelessWidget {
                 child: Text(text,
                   maxLines: 3,
                   style: TextStyle(
-                      color: Colors.black
+                      fontFamily: 'SEGOEUI',
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500
                   ),),
               ),
             ),
@@ -82,7 +84,7 @@ class AdminJobUserChatState extends State<AdminJobUserChat> {
             new Flexible(
               child: new TextField(
                 decoration:
-                new InputDecoration.collapsed(hintText: "Send a message",),
+                new InputDecoration.collapsed(hintText: "Send a message",hintStyle: Title),
                 controller: _textController,
                 onSubmitted: _handleSubmitted,
               ),
@@ -99,6 +101,19 @@ class AdminJobUserChatState extends State<AdminJobUserChat> {
       ),
     );
   }
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +139,7 @@ class AdminJobUserChatState extends State<AdminJobUserChat> {
             ),
             title:  Text(
               "UserName",
-              style: TextStyle(color: Colors.black),
+              style: ToolbarTitle,
             ),
           ),
           body:Column(

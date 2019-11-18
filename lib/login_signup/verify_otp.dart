@@ -3,52 +3,31 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class VerifyOtp extends StatelessWidget {
-  // This widget is the root of your application.
+class VerifyOtp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: PinCodeVerificationScreen(
-          "+8801376221100"), // a random number, please don't call xD
-    );
-  }
+  _VerifyOtpState createState() => _VerifyOtpState();
 }
 
-class PinCodeVerificationScreen extends StatefulWidget {
-  final String phoneNumber;
-  PinCodeVerificationScreen(this.phoneNumber);
-  @override
-  _PinCodeVerificationScreenState createState() =>
-      _PinCodeVerificationScreenState();
-}
+class _VerifyOtpState extends State<VerifyOtp> {
 
-class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
   var onTapRecognizer;
-
-  /// this [StreamController] will take input of which function should be called
-
   bool hasError = false;
   String currentText = "";
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  @override
-  void initState() {
-//    onTapRecognizer = TapGestureRecognizer()
-//      ..onTap = () {
-//       Navigator.pushNamed(context,'/Home');
-//      };
-//    super.initState();
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -74,19 +53,19 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
                   'Phone Number Verification',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                  style: ToolbarTitle,
                   textAlign: TextAlign.center,
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
+                const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
                 child: RichText(
                   text: TextSpan(
                       text: "Enter the code sent to ",
                       children: [
                         TextSpan(
-                            text: widget.phoneNumber,
+                            text: '9974922041',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -101,7 +80,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               ),
               Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
                   child: PinCodeTextField(
                     length: 4,
                     obsecureText: false,
@@ -159,13 +138,29 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               ),
               Align(
                 alignment: Alignment.center,
-                child: RaisedButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context,'/home');
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, '/home');
                   },
-                  child: Text('Verify'),
-                )
-              )
+                  child: Container(
+                    height: 45,
+                    width: 120,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Center(
+                      child:  Text('Verify',
+                        style: TextStyle(
+                            fontFamily: 'Helvetica',
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0.8,
+                            fontSize: 18,
+                            color: Colors.white),),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

@@ -189,6 +189,7 @@ class _UserInfoState extends State<UserInfo> {
           ),
         ),
         MaterialApp(
+          debugShowCheckedModeBanner: false,
           home: DefaultTabController(
             length: 3,
             child: Scaffold(
@@ -217,7 +218,7 @@ class _UserInfoState extends State<UserInfo> {
                         SizedBox(width: 15),
                         GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, '/notification');
+                              Navigator.pushNamed(context, '/login');
                             },
                             child: Icon(Icons.exit_to_app)),
                       ],

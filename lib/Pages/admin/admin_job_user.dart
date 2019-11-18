@@ -24,6 +24,20 @@ class AdminJobUser extends StatefulWidget {
 }
 
 class _AdminJobUserState extends State<AdminJobUser> {
+
+  TextStyle ToolbarTitle = TextStyle(
+      fontFamily: 'Helvetica',
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
+      color: Colors.black
+  );
+
+  TextStyle Title = TextStyle(
+      fontFamily: 'SEGOEUI',
+      fontSize: 16,
+      fontWeight: FontWeight.w500
+  );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -48,7 +62,7 @@ class _AdminJobUserState extends State<AdminJobUser> {
             ),
             title:  Text(
               "Job Users",
-              style: TextStyle(color: Colors.black),
+              style: ToolbarTitle,
             ),
           ),
           body:Container(
@@ -69,21 +83,16 @@ class _AdminJobUserState extends State<AdminJobUser> {
                         mainAxisAlignment : MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(dummyData[i].name,style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 19
-                          ),),
-                          Text(dummyData[i].time,style: TextStyle(
-                              color: Colors.grey,
-                              fontSize:14
-                          ),),
+                              fontFamily: 'SEGOEUI',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600
+                          )),
+                          Text(dummyData[i].time,style: Title),
                         ],
                       ),
                       subtitle: Container(
                         child: Text(dummyData[i].message ,
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15
-                          ),),
+                          style: Title),
                       ),
                     ),
                   ),

@@ -91,6 +91,12 @@ class _sign_upState extends State<sign_up> {
     else
       return null;
   }
+  String validateName(String value) {
+    if (value.length == 0)
+      return 'This Field Cannot Be Empty';
+    else
+      return null;
+  }
 
   ChooseGallery()async{
     File img =await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -185,7 +191,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your Name', hintStyle: Title,
           labelText: 'Name',labelStyle: Title
       ),
-      // validator : validateEmail,
+       validator : validateName,
       onSaved: (val) => name=val,
     );
 
@@ -232,6 +238,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your Secondary Contact Number', hintStyle: Title,
           labelText: 'Secondary Contact Number(Optional)', labelStyle: Title
       ),
+      validator : validateMobile,
       onSaved: (val) => secondMobile=val,
     );
 
@@ -244,7 +251,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your Primary Email', hintStyle: Title,
           labelText: 'Primary Email',labelStyle: Title
       ),
-      validator : validateMobile,
+      validator : validateEmail,
       onSaved: (val) => email=val,
     );
 
@@ -257,7 +264,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your Secondary Email', hintStyle: Title,
           labelText: 'Secondary Email(Optional)', labelStyle: Title
       ),
-
+      validator : validateEmail,
       onSaved: (val) => secondEmail=val,
     );
 
@@ -269,7 +276,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your Permanent Address', hintStyle: Title,
           labelText: 'Permanent Address',labelStyle: Title
       ),
-      validator : validateMobile,
+      validator : validateName,
       onSaved: (val) => address=val,
     );
 
@@ -282,7 +289,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your Temporary Address',hintStyle: Title,
           labelText: 'Temporary Address',labelStyle: Title
       ),
-      validator : validateMobile,
+      validator : validateName,
       onSaved: (val) => tempAddress=val,
     );
 
@@ -296,7 +303,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your Adhar Card Number', hintStyle: Title,
           labelText: 'Adhar Card Number',labelStyle: Title
       ),
-      validator : validateMobile,
+      validator : validateName,
       onSaved: (val) => adharCard=val,
     );
 
@@ -309,7 +316,7 @@ class _sign_upState extends State<sign_up> {
           hintText: 'Enter Your PAN Card Number', hintStyle: Title,
           labelText: 'PAN Card Number', labelStyle: Title
       ),
-      validator : validateMobile,
+      validator : validateName,
       onSaved: (val) => panCard=val,
     );
 
