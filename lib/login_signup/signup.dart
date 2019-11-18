@@ -316,26 +316,27 @@ class _sign_upState extends State<sign_up> {
     final SignUpButton=
     Align(
       alignment: Alignment.bottomRight,
-      child: Container(
-        height: 45,
-        width: 120,
-        decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(10)
-        ),
-        child: Center(
-            child: GestureDetector(
-              onTap: (){
-                Navigator.pushNamed(context, '/Home');
-              },
+      child: GestureDetector(
+        onTap: (){
+          Navigator.pushNamed(context, '/home');
+        },
+        child: Container(
+          height: 45,
+          width: 120,
+          decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Center(
               child: Text('SignUp',
-                style: TextStyle(
-                    fontFamily: 'Helvetica',
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.8,
-                    fontSize: 18,
-                    color: Colors.white),),
-            )),
+                  style: TextStyle(
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.8,
+                      fontSize: 18,
+                      color: Colors.white),),
+              ),
+        ),
       ),
     );
 

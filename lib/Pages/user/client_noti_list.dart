@@ -86,7 +86,7 @@ class _NotificationState extends State<Notification> {
                                     children: <Widget>[
                                       FlatButton(
                                         onPressed: (){
-                                          Navigator.pushNamed(context, '/Home');
+                                          Navigator.pushNamed(context, '/home');
                                         },
                                         child: Text('Apply',style: Title),
                                       ),
