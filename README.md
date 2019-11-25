@@ -1,16 +1,6 @@
 # freelance_exp
 
-A new Flutter application.
+A Flutter Application Where Freelancer Can Upload Their Details And Search For Jobs.
+Admin Can Post Job Requirement ,Add Notification , Add More Admins.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://user-images.githubusercontent.com/55477266/69533118-3ca5c380-0f9d-11ea-9462-a4a1e2a8d749.jpg" width="950" height="550">
